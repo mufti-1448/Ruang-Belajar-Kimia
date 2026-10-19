@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimia Study Hub - PPT 6 Ikatan Kimia (Spesial untuk Araa)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Konfigurasi MathJax agar membaca simbol $ untuk rumus -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  
+  <!-- MathJax for chemical equations and formulas -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .gradient-hero {
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #7c3aed 100%);
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+  <link rel="stylesheet" href="../shared-theme.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col selection:bg-blue-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl gradient-hero flex items-center justify-center text-white shadow-md shadow-blue-200">
+          <i class="fa-solid fa-atom text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-slate-900 text-base sm:text-lg leading-tight">Kimia Dasar UTS Hub</h1>
+          <p class="text-xs text-blue-600 font-semibold">Pertemuan 6: Ikatan Kimia & Gaya Antar Molekul</p>
+        </div>
+      </div>
+      
+      <!-- Greeting Badge -->
+      <div class="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/60 px-3.5 py-1.5 rounded-full shadow-sm">
+        <i class="fa-solid fa-sparkles text-amber-500 text-xs"></i>
+        <span class="text-xs font-semibold text-slate-700">Khusus untuk <strong class="text-blue-700">Araa</strong> ✨</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- Sidebar Navigation -->
+    <aside class="lg:col-span-3 space-y-4">
+      <div class="glass-card rounded-2xl p-4 shadow-sm sticky top-20">
+        <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 px-2 mb-3">Menu Utama</p>
+        <nav class="space-y-1.5">
+          <button id="nav-materi" onclick="switchTab('materi')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all bg-blue-600 text-white shadow-md shadow-blue-100">
+            <span class="flex items-center space-x-2.5">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Ringkasan PPT 6</span>
+            </span>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+          <button id="nav-quiz" onclick="switchTab('quiz')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all text-slate-600 hover:bg-slate-100">
+            <span class="flex items-center space-x-2.5">
+              <i class="fa-solid fa-vial-circle-check"></i>
+              <span>Latihan Quiz 20 Soal</span>
+            </span>
+            <span class="bg-blue-100 text-blue-700 text-[11px] px-2 py-0.5 rounded-full font-bold">20 Soal</span>
+          </button>
+        </nav>
+
+        <!-- Topic Links -->
+        <div id="topic-menu" class="mt-6 pt-4 border-t border-slate-100 space-y-1">
+          <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 px-2 mb-2">Topik PPT 6</p>
+          <div class="space-y-1 text-xs max-h-[320px] overflow-y-auto custom-scrollbar pr-1">
+            <a href="#sec-ionik" class="block p-2 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition text-slate-600">1. Ikatan Ion, Lewis & Tata Nama</a>
+            <a href="#sec-kovalen" class="block p-2 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition text-slate-600">2. Ikatan Kovalen & Panjang Ikatan</a>
+            <a href="#sec-polaritas" class="block p-2 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition text-slate-600">3. Elektronegativitas & Momen Dipol</a>
+            <a href="#sec-logam" class="block p-2 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition text-slate-600">4. Ikatan Logam & Lautan Elektron</a>
+            <a href="#sec-antarmolekul" class="block p-2 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition text-slate-600">5. Gaya Antar Molekul & Ikatan H</a>
+          </div>
+        </div>
+
+        <!-- Sender Note Card -->
+        <div class="mt-6 p-3.5 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-xl border border-blue-100 text-center space-y-1.5">
+          <i class="fa-solid fa-heart text-pink-500 text-lg"></i>
+          <h4 class="text-xs font-bold text-slate-800">Semangat UTS ya, Araa!</h4>
+          <p class="text-[11px] text-slate-600 leading-snug">
+            Website pembelajaran interaktif ini khusus dibuatkan oleh temanmu agar Araa makin paham materi Ikatan Kimia!
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="lg:col-span-9">
+
+      <!-- VIEW 1: MATERI -->
+      <div id="view-materi" class="space-y-6">
+        
+        <!-- Welcome Banner -->
+        <div class="gradient-hero rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+          <div class="relative z-10 max-w-2xl">
+            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wider backdrop-blur-md">Pertemuan 6 Mastery</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold mt-3 leading-tight">Materi Ikatan Kimia & Gaya Antar Molekul ✨</h2>
+            <p class="text-blue-100 text-sm mt-2 leading-relaxed">
+              Ringkasan komprehensif dari <strong>PPT Kimia Dasar Pertemuan 6</strong>. Pelajari konsep transfer elektron, pembagian elektron, lautan elektron, momen dipol, dan gaya antarmolekul di sini!
+            </p>
+          </div>
+        </div>
+
+        <!-- SUBSECTION 1: IKATAN IONIK, DIAGRAM LEWIS & TATA NAMA -->
+        <section id="sec-ionik" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-blue-600">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-blue-700">
+              <i class="fa-solid fa-bolt text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">1. Ikatan Ionik, Diagram Lewis & Tata Nama Senyawa</h3>
+            </div>
+            <span class="bg-blue-100 text-blue-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">PPT 6 Slide 3-10</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+              <h4 class="font-bold text-blue-800 text-sm"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer Elektron & Aturan Oktet</h4>
+              <p class="text-slate-600 leading-relaxed">
+                Atom-atom berikatan untuk mencapai konfigurasi stabil 8 elektron valensi (seperti gas mulia). Pada ikatan ion terjadi <strong>transfer elektron</strong> dari unsur logam (melepas $e^-$ membentuk kation) ke non-logam (menerima $e^-$ membentuk anion).
+              </p>
+              <div class="bg-white p-2.5 rounded-lg border border-blue-100 font-mono text-slate-700 space-y-1">
+                <p>$\text{Na} \rightarrow \text{Na}^+ + e^- \quad (1s^2 2s^2 2p^6)$</p>
+                <p>$\text{Cl} + e^- \rightarrow \text{Cl}^- \quad (1s^2 2s^2 2p^6 3s^2 3p^6)$</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+              <h4 class="font-bold text-blue-800 text-sm"><i class="fa-solid fa-font"></i> Aturan Tata Nama Ion & Hidrat</h4>
+              <ul class="list-disc list-inside space-y-1 text-slate-600">
+                <li><strong>Sistem Stock (Logam Transisi):</strong> Nama kation + (Angka Romawi muatan) + Anion. Contoh: $\text{FeCl}_2$ = iron(II) chloride / ferrous chloride; $\text{FeCl}_3$ = iron(III) chloride / ferric chloride.</li>
+                <li><strong>Akhiran Cationic (-ous vs -ic):</strong> Muatan lebih rendah berakhiran <em>-ous</em> (cuprous $\text{Cu}^+$), muatan lebih tinggi berakhiran <em>-ic</em> (cupric $\text{Cu}^{2+}$).</li>
+                <li><strong>Garam Hidrat:</strong> Molekul air terikat dalam kristal. Contoh: $\text{CuSO}_4 \cdot 5\text{H}_2\text{O}$ = copper(II) sulfate pentahydrate; $\text{MgSO}_4 \cdot 7\text{H}_2\text{O}$ = Epsom salt (heptahydrate).</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUBSECTION 2: IKATAN KOVALEN & PANJANG IKATAN -->
+        <section id="sec-kovalen" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-indigo-600">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-indigo-700">
+              <i class="fa-solid fa-circle-nodes text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">2. Ikatan Kovalen & Karakteristik Panjang Ikatan</h3>
+            </div>
+            <span class="bg-indigo-100 text-indigo-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">PPT 6 Slide 11-15</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div class="bg-indigo-50/50 p-3.5 rounded-xl border border-indigo-100 space-y-1">
+              <span class="font-bold text-indigo-900 text-sm">Ikatan Tunggal (Single)</span>
+              <p class="text-slate-600">Pemakaian 1 pasang elektron bersama ($2e^-$). Contoh: $\text{H}-\text{H}, \text{F}-\text{F}$. Panjang ikatan $\text{C}-\text{C} = 154\text{ pm}$.</p>
+            </div>
+            <div class="bg-indigo-50/50 p-3.5 rounded-xl border border-indigo-100 space-y-1">
+              <span class="font-bold text-indigo-900 text-sm">Ikatan Rangkap (Double)</span>
+              <p class="text-slate-600">Pemakaian 2 pasang elektron bersama ($4e^-$). Contoh: $\text{O}=\text{C}=\text{O}$. Panjang ikatan $\text{C}=\text{C} = 134\text{ pm}$.</p>
+            </div>
+            <div class="bg-indigo-50/50 p-3.5 rounded-xl border border-indigo-100 space-y-1">
+              <span class="font-bold text-indigo-900 text-sm">Ikatan Rangkap Tiga (Triple)</span>
+              <p class="text-slate-600">Pemakaian 3 pasang elektron bersama ($6e^-$). Contoh: $\text{H}-\text{C}\equiv\text{C}-\text{H}, \text{N}\equiv\text{N}$. Panjang ikatan $\text{C}\equiv\text{C} = 120\text{ pm}$.</p>
+            </div>
+          </div>
+
+          <div class="bg-amber-50 p-3.5 rounded-xl border border-amber-200 text-xs">
+            <strong class="text-amber-900"><i class="fa-solid fa-ruler"></i> Aturan Utama Panjang Ikatan (Bond Length):</strong>
+            <p class="text-slate-700 mt-1">Semakin banyak pasangan elektron ikatan antar atom (Tunggal $\rightarrow$ Rangkap $\rightarrow$ Rangkap Tiga), gaya tarik antar inti makin kuat sehingga <strong>panjang ikatan semakin PENDEK dan ikatan semakin KUAT</strong>!</p>
+          </div>
+        </section>
+
+        <!-- SUBSECTION 3: ELEKTRONEGATIVITAS & MOMEN DIPOL -->
+        <section id="sec-polaritas" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-purple-600">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-purple-700">
+              <i class="fa-solid fa-magnet text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">3. Elektronegativitas, Kovalen Polar & Momen Dipol</h3>
+            </div>
+            <span class="bg-purple-100 text-purple-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">PPT 6 Slide 16-19</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+              <h4 class="font-bold text-purple-800 text-sm">Skala Elektronegativitas & Jenis Ikatan</h4>
+              <p class="text-slate-600">Perbedaan elektronegativitas ($\Delta EN$) menentukan polaritas ikatan:</p>
+              <ul class="list-disc list-inside space-y-1 text-slate-700">
+                <li>$\Delta EN = 0 - 0.4 \rArr$ <strong>Kovalen Nonpolar</strong> (pembagian densitas $e^-$ seimbang, contoh: $\text{H}_2, \text{CH}_4$).</li>
+                <li>$\Delta EN > 0.4 \rArr$ <strong>Kovalen Polar</strong> (pembagian densitas $e^-$ tidak seimbang, atom lebih elektronegatif menarik $e^-$ membentuk muatan parsial $\delta^-$).</li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+              <h4 class="font-bold text-purple-800 text-sm">Momen Dipol ($\mu$) & Geometri Molekul</h4>
+              <p class="text-slate-600">Ukuran polaritas molekul net ($\mu = Q \times r$, satuan Debye/D):</p>
+              <ul class="list-disc list-inside space-y-1 text-slate-700">
+                <li><strong>Molekul Polar ($\mu > 0$):</strong> Asimetris atau memiliki Pasangan Elektron Bebas (PEB). Contoh: $\text{H}_2\text{O} (\mu = 1.85\text{ D})$, $\text{NH}_3 (\mu = 1.47\text{ D})$.</li>
+                <li><strong>Molekul Nonpolar ($\mu = 0$):</strong> Simetris sehingga dipol saling meniadakan. Contoh: $\text{CO}_2 (\mu = 0\text{ D})$, $\text{CCl}_4 (\mu = 0\text{ D})$.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUBSECTION 4: IKATAN LOGAM -->
+        <section id="sec-logam" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-teal-600">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-teal-700">
+              <i class="fa-solid fa-gem text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">4. Ikatan Logam & Model Lautan Elektron</h3>
+            </div>
+            <span class="bg-teal-100 text-teal-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">PPT 6 Slide 20-22</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-teal-50/50 p-4 rounded-xl border border-teal-100 space-y-2">
+              <h4 class="font-bold text-teal-900 text-sm">Prinsip Lautan Elektron (Delocalized Electrons)</h4>
+              <p class="text-slate-600 leading-relaxed">
+                Gaya elektrostatik antara ion positif kation logam dengan <strong>lautan elektron yang terdelokalisasi</strong> (bebas bergerak di seluruh struktur logam). Menjelaskan sifat konduktivitas listrik, dapat ditempa (malleable), dan ulet (ductile).
+              </p>
+            </div>
+
+            <div class="bg-teal-50/50 p-4 rounded-xl border border-teal-100 space-y-2">
+              <h4 class="font-bold text-teal-900 text-sm">Perbandingan Natrium ($\text{Na}$) vs Magnesium ($\text{Mg}$)</h4>
+              <ul class="list-disc list-inside space-y-1 text-slate-700">
+                <li><strong>$\text{Mg}$ lebih kuat dibanding $\text{Na}$ karena:</strong> $\text{Mg}$ memiliki 2 elektron valensi di 3s (densitas $e^-$ 2x lipat $\text{Na}$), muatan inti $+2$, jari-jari ion lebih kecil, dan tiap atom mengikat 12 atom tetangga ($\text{Na}$ hanya 8).</li>
+                <li><strong>Lelehan Logam (Molten Metal):</strong> Saat meleleh, ikatan logam TIDAK RUSAK, melainkan hanya merenggang. Ikatan logam baru benar-benar rusak saat logam mendidih/menguap!</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUBSECTION 5: GAYA ANTAAR MOLEKUL & IKATAN HIDROGEN -->
+        <section id="sec-antarmolekul" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-rose-600">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-rose-700">
+              <i class="fa-solid fa-droplet text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">5. Gaya Antar Molekul (Intermolecular Forces) & Ikatan Hidrogen</h3>
+            </div>
+            <span class="bg-rose-100 text-rose-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">PPT 6 Slide 23-28</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse border border-slate-200 bg-white rounded-lg overflow-hidden">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2.5 border border-slate-200">Jenis Gaya</th>
+                  <th class="p-2.5 border border-slate-200">Kekuatan (kJ/mol)</th>
+                  <th class="p-2.5 border border-slate-200">Karakteristik & Terjadi Pada</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-600">
+                <tr>
+                  <td class="p-2.5 border font-bold text-rose-700">Gaya Ion-Dipol</td>
+                  <td class="p-2.5 border font-semibold">10 - 50</td>
+                  <td class="p-2.5 border">Interaksi antara ion dengan molekul polar (contoh: $\text{Na}^+$ dilarutkan dalam air $\text{H}_2\text{O}$).</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-2.5 border font-bold text-rose-700">Ikatan Hidrogen</td>
+                  <td class="p-2.5 border font-semibold">10 - 40</td>
+                  <td class="p-2.5 border">Interaksi atom $\text{H}$ yang terikat pada atom sangat elektronegatif ($\text{F, O, N}$) dengan PEB atom elektronegatif molekul tetangga. Menyebabkan titik didih $\text{H}_2\text{O}, \text{HF}, \text{NH}_3$ sangat TINGGI secara anomali!</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 border font-bold text-rose-700">Gaya Dipol-Dipol</td>
+                  <td class="p-2.5 border font-semibold">3 - 4</td>
+                  <td class="p-2.5 border">Tarik-menarik antar molekul polar netral.</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-2.5 border font-bold text-rose-700">Dispersi London</td>
+                  <td class="p-2.5 border font-semibold">1 - 10</td>
+                  <td class="p-2.5 border">Terjadi pada SEMUA atom/molekul akibat dipol sesaat dari pergerakan elektron. Kekuatan naik seiring ukuran & polarisabilitas.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- CTA Go to Quiz -->
+        <div class="bg-slate-900 text-white rounded-3xl p-6 text-center space-y-3 shadow-lg">
+          <h3 class="font-bold text-lg">Siap Latihan Soal PPT 6, Araa?</h3>
+          <p class="text-xs text-slate-300 max-w-lg mx-auto leading-relaxed">
+            Tersedia 20 soal latihan pilihan ganda komprehensif. Cobalah menjawab dan pelajari pembahasan lengkap per opsi pilihan!
+          </p>
+          <button onclick="switchTab('quiz')" class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:opacity-95 transition shadow-lg inline-flex items-center space-x-2">
+            <span>Buka Latihan Quiz (20 Soal)</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- VIEW 2: QUIZ -->
+      <div id="view-quiz" class="hidden space-y-6">
+
+        <!-- Quiz Progress Banner -->
+        <div class="glass-card rounded-2xl p-6 shadow-sm border-b-2 border-blue-500 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Latihan Quiz PPT Pertemuan 6</span>
+            <h2 class="text-xl font-extrabold text-slate-900">20 Soal Latihan & Pembahasan Detail Per Opsi</h2>
+          </div>
+          <div class="flex items-center space-x-3 bg-slate-100 px-4 py-2 rounded-xl">
+            <div class="text-right">
+              <p class="text-[10px] text-slate-500 font-bold uppercase">Skor Araa</p>
+              <p id="score-display" class="text-lg font-black text-blue-600">0 / 20</p>
+            </div>
+            <button onclick="resetQuiz()" class="text-xs bg-white text-slate-600 px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 font-semibold transition flex items-center space-x-1" title="Reset Quiz">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>Reset</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-list-container" class="space-y-6">
+          <!-- Dynamic Quiz Cards JS populated -->
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>Dibuat khusus untuk <strong class="text-slate-800">Araa</strong> &bull; Materi PPT Pertemuan 6 Ikatan Kimia</p>
+      <p class="mt-1 text-[11px] text-slate-400">Semoga UTS Kimia Dasar-nya lancar dan dapat nilai A! 🌟</p>
+    </div>
+  </footer>
+
+  <!-- Quiz Script -->
+  <script>
+    const questions = [
+      {
+        id: 1,
+        topic: "Aturan Oktet & Transfer Elektron",
+        question: "Berdasarkan PPT Pertemuan 6, pembentukan ikatan ionik pada NaCl terjadi karena...",
+        options: [
+          { text: "Pemakaian bersama satu pasang elektron antara Na dan Cl", isCorrect: false },
+          { text: "Transfer elektron di mana atom Na melepas 1 elektron menjadi Na⁺ dan Cl menerima 1 elektron menjadi Cl⁻", isCorrect: true },
+          { text: "Gaya tarik menarik antara lautan elektron terdelokalisasi", isCorrect: false },
+          { text: "Pembentukan ikatan kovalen polar akibat perbedaan elektronegativitas yang kecil", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Sempurna! Atom Na (1s² 2s² 2p⁶ 3s¹) mentransfer 1 elektron valensinya ke atom Cl (1s² 2s² 2p⁶ 3s² 3p⁵). Na menjadi kation Na⁺ dan Cl menjadi anion Cl⁻ yang saling tarik elektrostatik.",
+          wrongOpts: {
+            "Pemakaian bersama satu pasang elektron antara Na dan Cl": "Salah! Ini adalah definisi dari Ikatan Kovalen, bukan ikatan ionik.",
+            "Gaya tarik menarik antara lautan elektron terdelokalisasi": "Salah! Ini adalah definisi dari Ikatan Logam.",
+            "Pembentukan ikatan kovalen polar akibat perbedaan elektronegativitas yang kecil": "Salah! Perbedaan elektronegativitas Na dan Cl sangat besar (> 2.0), sehingga membentuk ikatan ionik."
+          }
+        }
+      },
+      {
+        id: 2,
+        topic: "Tata Nama Senyawa Ionik (Sistem Stock)",
+        question: "Nama kimia resmi untuk senyawa FeCl₂ menurut Sistem Stock yang tepat adalah...",
+        options: [
+          { text: "iron(III) chloride", isCorrect: false },
+          { text: "iron(II) chloride", isCorrect: true },
+          { text: "ferric chloride", isCorrect: false },
+          { text: "iron dichloride", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Hebat! Karena Cl bermuatan -1 (ada 2 ion Cl⁻), maka muatan besi adalah +2. Dalam Sistem Stock dituliskan iron(II) chloride atau ferrous chloride.",
+          wrongOpts: {
+            "iron(III) chloride": "Salah! Iron(III) chloride atau ferric chloride memiliki rumus kimia FeCl₃ (muatan Fe = +3).",
+            "ferric chloride": "Salah! Ferric chloride menunjukkan Fe³⁺ (FeCl₃), sedangkan ferrous chloride menunjukkan Fe²⁺ (FeCl₂).",
+            "iron dichloride": "Kurang tepat! Awalan Yunani (di-, tri-) digunakan untuk penamaan senyawa kovalen non-logam, bukan ikatan ionik."
+          }
+        }
+      },
+      {
+        id: 3,
+        topic: "Tata Nama Garam Hidrat",
+        question: "Senyawa CuSO₄·5H₂O biasa digunakan sebagai fungisida. Nama kimia yang benar untuk senyawa hidrat ini adalah...",
+        options: [
+          { text: "copper(II) sulfate pentahydrate", isCorrect: true },
+          { text: "copper(I) sulfate hexahydrate", isCorrect: false },
+          { text: "copper sulfate water", isCorrect: false },
+          { text: "cuprous sulfate pentahydrate", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Tepat! Ion tembaga bermuatan +2 [copper(II)], anionnya sulfate (SO₄²⁻), dan mengikat 5 molekul air kristal (pentahydrate).",
+          wrongOpts: {
+            "copper(I) sulfate hexahydrate": "Salah! Copper(I) adalah Cu⁺ dan hexahydrate berarti mengikat 6H₂O.",
+            "copper sulfate water": "Salah! Penamaan senyawa hidrat wajib memakai angka romawi muatan dan awalan Yunani untuk H₂O.",
+            "cuprous sulfate pentahydrate": "Salah! Cuprous mengacu pada tembaga(I) / Cu⁺. Tembaga(II) disebut cupric atau copper(II)."
+          }
+        }
+      },
+      {
+        id: 4,
+        topic: "Panjang Ikatan Kovalen (Bond Length)",
+        question: "Manakah urutan panjang ikatan antar atom Karbon dari yang TERPANJANG hingga TERPENDEK?",
+        options: [
+          { text: "C≡C > C=C > C-C", isCorrect: false },
+          { text: "C-C > C=C > C≡C", isCorrect: true },
+          { text: "C=C > C-C > C≡C", isCorrect: false },
+          { text: "C-C > C≡C > C=C", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Mantap! Sesuai tabel PPT 6: Ikatan tunggal C-C paling panjang (154 pm), ikatan rangkap dua C=C (134 pm), dan ikatan rangkap tiga C≡C paling pendek (120 pm) karena gaya tarik menarik elektron terbanyak.",
+          wrongOpts: {
+            "C≡C > C=C > C-C": "Terbalik! Ikatan rangkap tiga adalah yang paling pendek, bukan terpanjang.",
+            "C=C > C-C > C≡C": "Salah! C-C lebih panjang daripada C=C.",
+            "C-C > C≡C > C=C": "Salah! C≡C lebih pendek daripada C=C."
+          }
+        }
+      },
+      {
+        id: 5,
+        topic: "Elektronegativitas & Polaritas",
+        question: "Suatu ikatan kovalen dikategorikan sebagai Kovalen Nonpolar apabila perbedaan elektronegativitas (ΔEN) antar kedua atom berkisar...",
+        options: [
+          { text: "> 2.0", isCorrect: false },
+          { text: "0 - 0.4", isCorrect: true },
+          { text: "0.5 - 1.9", isCorrect: false },
+          { text: "Selalu bernilai negatif", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Joss! Sesuai slide PPT 6: Perbedaan elektronegativitas 0 sampai 0.4 menghasilkan ikatan Kovalen Nonpolar (seperti H-H atau C-H). Jika > 0.4 tergolong Kovalen Polar.",
+          wrongOpts: {
+            "> 2.0": "Salah! Perbedaan > 2.0 biasanya menghasilkan ikatan Ionik.",
+            "0.5 - 1.9": "Salah! Ini adalah rentang untuk ikatan Kovalen Polar.",
+            "Selalu bernilai negatif": "Salah! Perbedaan elektronegativitas dihitung dari nilai mutlak (selalu positif)."
+          }
+        }
+      },
+      {
+        id: 6,
+        topic: "Momen Dipol & Geometri Molekul",
+        question: "Mengapa molekul CO₂ (Karbon Dioksida) bersifat NONPOLAR (Momen Dipol μ = 0 D), padahal ikatan C=O sendiri bersifat polar?",
+        options: [
+          { text: "Karena Karbon dan Oksigen memiliki elektronegativitas yang persis sama", isCorrect: false },
+          { text: "Karena molekul CO₂ berbentuk linier simetris sehingga momen dipol kedua ikatan saling meniadakan", isCorrect: true },
+          { text: "Karena CO₂ memiliki dua pasangan elektron bebas pada atom pusat Karbon", isCorrect: false },
+          { text: "Karena CO₂ membentuk ikatan hidrogen antar molekulnya", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Pintar! CO₂ berbentuk linier (O=C=O). Vektor momen dipol dari C ke O mengarah ke dua arah yang berlawanan dengan besar sama, sehingga saling menghilangkan (net μ = 0 D).",
+          wrongOpts: {
+            "Karena Karbon dan Oksigen memiliki elektronegativitas yang persis sama": "Salah! Oksigen (3.5) jauh lebih elektronegatif dibanding Karbon (2.5).",
+            "Karena CO₂ memiliki dua pasangan elektron bebas pada atom pusat Karbon": "Salah! Atom pusat C pada CO₂ tidak memiliki PEB sama sekali.",
+            "Karena CO₂ membentuk ikatan hidrogen antar molekulnya": "Salah! CO₂ tidak mengandung atom H, sehingga tidak ada ikatan hidrogen."
+          }
+        }
+      },
+      {
+        id: 7,
+        topic: "Model Lautan Elektron pada Logam",
+        question: "Sifat logam yang dapat ditempa (malleable) dan menghantarkan arus listrik dapat dijelaskan oleh...",
+        options: [
+          { text: "Transfer elektron yang terkunci rapat pada kation", isCorrect: false },
+          { text: "Keberadaan lautan elektron terdelokalisasi yang bebas bergerak di antara kation logam", isCorrect: true },
+          { text: "Pembentukan ikatan kovalen koordinasi antar atom logam", isCorrect: false },
+          { text: "Gaya dipol-dipol yang sangat kuat antar molekul logam", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Hebat! Pada ikatan logam, elektron valensi terdelokalisasi membentuk 'lautan elektron' yang mengelilingi ion positif. Elektron ini bebas bergerak membawa muatan listrik dan memungkinkan kation bergeser tanpa pecah.",
+          wrongOpts: {
+            "Transfer elektron yang terkunci rapat pada kation": "Salah! Elektron pada logam terdelokalisasi (bebas bergerak), tidak terkunci.",
+            "Pembentukan ikatan kovalen koordinasi antar atom logam": "Salah! Logam tidak berikatan kovalen.",
+            "Gaya dipol-dipol yang sangat kuat antar molekul logam": "Salah! Logam bukan molekul netral berdipol."
+          }
+        }
+      },
+      {
+        id: 8,
+        topic: "Perbandingan Ikatan Logam Na vs Mg",
+        question: "Berdasarkan PPT Pertemuan 6, ikatan logam pada Magnesium (Mg) LEBIH KUAT dibanding Natrium (Na) karena...",
+        options: [
+          { text: "Mg memiliki elektron valensi 2x lebih banyak dan muatan inti +2 yang menarik lautan elektron lebih kuat", isCorrect: true },
+          { text: "Jari-jari atom Mg jauh lebih besar dibanding Na", isCorrect: false },
+          { text: "Mg mengikat 8 atom tetangga sedangkan Na mengikat 12 atom tetangga", isCorrect: false },
+          { text: "Na bersifat non-logam sedangkan Mg bersifat logam sejati", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Sempurna! Mg (3s²) menyumbang 2e⁻ per atom ke lautan elektron (densitas e⁻ 2x lipat Na), memiliki muatan inti +2, jari-jari lebih kecil, dan tiap atom Mg terikat dengan 12 atom tetangga (Na hanya 8).",
+          wrongOpts: {
+            "Jari-jari atom Mg jauh lebih besar dibanding Na": "Salah! Jari-jari ion Mg²⁺ justru lebih KECIL dibanding Na⁺ dalam satu periode.",
+            "Mg mengikat 8 atom tetangga sedangkan Na mengikat 12 atom tetangga": "Terbalik! Mg mengikat 12 atom tetangga, sedangkan Na mengikat 8 atom tetangga.",
+            "Na bersifat non-logam sedangkan Mg bersifat logam sejati": "Salah! Na dan Mg keduanya adalah logam alkali & alkali tanah."
+          }
+        }
+      },
+      {
+        id: 9,
+        topic: "Ikatan Logam pada Lelehan Logam",
+        question: "Apa yang terjadi pada ikatan logam saat suatu logam mengalami pelelehan (fase padat menjadi cair)?",
+        options: [
+          { text: "Ikatan logam terputus total dan elektron kembali ke atom masing-masing", isCorrect: false },
+          { text: "Ikatan logam tetap ada tetapi susunan strukturnya merenggang", isCorrect: true },
+          { text: "Logam berubah menjadi senyawa ionik", isCorrect: false },
+          { text: "Ikatan logam menjadi ikatan kovalen polar", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Luar biasa! Menurut PPT 6 Slide 22: Pada lelehan logam (molten metal), ikatan logam tidak rusak melainkan hanya merenggang. Ikatan logam baru benar-benar rusak total saat logam mendidih (menguap).",
+          wrongOpts: {
+            "Ikatan logam terputus total dan elektron kembali ke atom masing-masing": "Salah! Pelelehan hanya merenggangkan struktur, baru pendidihan yang memutus ikatan.",
+            "Logam berubah menjadi senyawa ionik": "Salah! Perubahan wujud fisik tidak mengubah jenis ikatan kimia menjadi ikatan ion.",
+            "Ikatan logam menjadi ikatan kovalen polar": "Salah! Logam cair tetap terikat oleh ikatan logam."
+          }
+        }
+      },
+      {
+        id: 10,
+        topic: "Gaya Antar Molekul (Ion-Dipol)",
+        question: "Interaksi antara ion Na⁺ dan molekul air (H₂O) saat garam dilarutkan dalam air merupakan contoh dari...",
+        options: [
+          { text: "Ikatan Hidrogen", isCorrect: false },
+          { text: "Gaya Ion-Dipol", isCorrect: true },
+          { text: "Gaya Dispersi London", isCorrect: false },
+          { text: "Gaya Dipol-Dipol", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Tepat! Gaya Ion-Dipol terjadi akibat interaksi elektrostatik antara suatu ion (Na⁺ atau Cl⁻) dengan muatan parsial molekul polar (ujung δ⁻ Oksigen pada H₂O menarik Na⁺).",
+          wrongOpts: {
+            "Ikatan Hidrogen": "Salah! Ikatan hidrogen terjadi antar molekul polar yang mengandung H terikat F/O/N.",
+            "Gaya Dispersi London": "Salah! Ini gaya antar molekul nonpolar akibat dipol sesaat.",
+            "Gaya Dipol-Dipol": "Salah! Gaya dipol-dipol terjadi antar dua molekul polar netral (tidak melibatkan ion)."
+          }
+        }
+      },
+      {
+        id: 11,
+        topic: "Anomali Titik Didih & Ikatan Hidrogen",
+        question: "Mengapa senyawa H₂O, NH₃, dan HF memiliki titik didih yang jauh LEBIH TINGGI daripada hibrida golongan mereka dalam tabel periodik?",
+        options: [
+          { text: "Karena massa molekul relatif (Mr) H₂O, NH₃, dan HF paling besar", isCorrect: false },
+          { text: "Karena molekul-molekul tersebut mampu membentuk Ikatan Hidrogen antar molekulnya", isCorrect: true },
+          { text: "Karena ketiganya membentuk ikatan logam di dalam larutan", isCorrect: false },
+          { text: "Karena ketiganya bersifat nonpolar", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Sempurna! Sesuai Grafik PPT 6 Slide 27: Atom N, O, dan F sangat elektronegatif sehingga membentuk ikatan H-N, H-O, H-F yang sangat polar. Ikatan Hidrogen antarmolekul ini membutuhkan energi thermal ekstra besar untuk diputuskan saat mendidih.",
+          wrongOpts: {
+            "Karena massa molekul relatif (Mr) H₂O, NH₃, dan HF paling besar": "Salah! Justru H₂O, NH₃, HF memiliki Mr paling KECIL di golongannya.",
+            "Karena ketiganya membentuk ikatan logam di dalam larutan": "Salah! H₂O, NH₃, HF adalah molekul kovalen, tidak ada ikatan logam.",
+            "Karena ketiganya bersifat nonpolar": "Salah! Ketiganya bersifat POLAR kuat."
+          }
+        }
+      },
+      {
+        id: 12,
+        topic: "Gaya Dispersi London",
+        question: "Gaya antar molekul yang dialami oleh SEMUA atom dan molekul (termasuk molekul nonpolar seperti Benzena atau gas Mulia) adalah...",
+        options: [
+          { text: "Gaya Ion-Dipol", isCorrect: false },
+          { text: "Gaya Dispersi London", isCorrect: true },
+          { text: "Ikatan Hidrogen", isCorrect: false },
+          { text: "Ikatan Ionik", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Benar! Gaya Dispersi London terjadi akibat pergerakan acak elektron yang menciptakan dipol sesaat (instantaneous dipole) pada semua molekul.",
+          wrongOpts: {
+            "Gaya Ion-Dipol": "Salah! Membutuhkan kehadiran ion bermuatan.",
+            "Ikatan Hidrogen": "Salah! Hanya terjadi jika ada H terikat F, O, atau N.",
+            "Ikatan Ionik": "Salah! Ini adalah ikatan intramolekul antar kation dan anion."
+          }
+        }
+      },
+      {
+        id: 13,
+        topic: "Tata Nama Senyawa Kovalen Biner",
+        question: "Nama kimia resmi untuk senyawa N₂O₅ menurut aturan penamaan ikatan kovalen adalah...",
+        options: [
+          { text: "nitrogen oxide", isCorrect: false },
+          { text: "dinitrogen pentoxide", isCorrect: true },
+          { text: "nitrogen pentoxide", isCorrect: false },
+          { text: "dinitrogen tetroxide", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Joss! Sesuai contoh PPT 6 Slide 14: Ada 2 atom Nitrogen (dinitrogen) dan 5 atom Oksigen (pentoxide), sehingga dinamakan dinitrogen pentoxide.",
+          wrongOpts: {
+            "nitrogen oxide": "Salah! Tidak memakai awalan jumlah atom Yunani.",
+            "nitrogen pentoxide": "Salah! Lupa menyertakan awalan di- pada Nitrogen.",
+            "dinitrogen tetroxide": "Salah! Tetroxide mengacu pada 4 atom Oksigen (N₂O₄)."
+          }
+        }
+      },
+      {
+        id: 14,
+        topic: "Perbandingan Kekuatan Gaya Antar Molekul",
+        question: "Manakah urutan kekuatan gaya antar molekul dari yang TERKUAT hingga TERLEMAH berdasarkan PPT Pertemuan 6?",
+        options: [
+          { text: "Dispersi London > Dipol-Dipol > Ikatan Hidrogen", isCorrect: false },
+          { text: "Gaya Ion-Dipol > Ikatan Hidrogen > Gaya Dipol-Dipol > Dispersi London", isCorrect: true },
+          { text: "Dipol-Dipol > Ion-Dipol > Dispersi London", isCorrect: false },
+          { text: "Semua gaya antar molekul memiliki energi yang sama persis", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Pintar! Sesuai Tabel 10.5 PPT 6: Ion-Dipol (10-50 kJ/mol) > Ikatan Hidrogen (10-40 kJ/mol) > Dipol-Dipol (3-4 kJ/mol) > Dispersi London (1-10 kJ/mol).",
+          wrongOpts: {
+            "Dispersi London > Dipol-Dipol > Ikatan Hidrogen": "Terbalik! Dispersi London adalah gaya antarmolekul terlemah.",
+            "Dipol-Dipol > Ion-Dipol > Dispersi London": "Salah! Ion-Dipol jauh lebih kuat daripada Dipol-Dipol.",
+            "Semua gaya antar molekul memiliki energi yang sama persis": "Salah! Masing-masing gaya memiliki rentang energi yang berbeda."
+          }
+        }
+      },
+      {
+        id: 15,
+        topic: "Diagram Lewis & Pasangan Elektron Bebas (PEB)",
+        question: "Berapa jumlah Pasangan Elektron Bebas (Lone Pairs / Nonbonding Pairs) pada molekul Fluorin (F₂)?",
+        options: [
+          { text: "1 pasang", isCorrect: false },
+          { text: "6 pasang (3 pasang pada tiap atom F)", isCorrect: true },
+          { text: "0 pasang", isCorrect: false },
+          { text: "4 pasang", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Hebat! Sesuai PPT 6 Slide 12: Masing-masing atom F memiliki 7 elektron valensi. 1 elektron digunakan berikatan kovalen tunggal (1 pasang ikatan), dan 6 elektron sisanya membentuk 3 pasang elektron bebas per atom F (total 6 pasang PEB di molekul F₂).",
+          wrongOpts: {
+            "1 pasang": "Salah! 1 pasang adalah Pasangan Elektron Ikatan (PEI), bukan PEB.",
+            "0 pasang": "Salah! F₂ memiliki banyak pasangan elektron bebas di sekeliling atom F.",
+            "4 pasang": "Salah perhitungan jumlah elektron valensi."
+          }
+        }
+      },
+      {
+        id: 16,
+        topic: "Pasangan Ion Poliatomik",
+        question: "Rumus kimia dan muatan yang tepat untuk ion Permanganat dan ion Karbonat adalah...",
+        options: [
+          { text: "MnO₄⁻ dan CO₃²⁻", isCorrect: true },
+          { text: "MnO₄²⁻ dan HCO₃⁻", isCorrect: false },
+          { text: "CrO₄²⁻ dan CO₃²⁻", isCorrect: false },
+          { text: "NO₃⁻ dan SO₄²⁻", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Tepat! Sesuai tabel ion poliatomik PPT 6: Permanganate ion = MnO₄⁻, Carbonate ion = CO₃²⁻.",
+          wrongOpts: {
+            "MnO₄²⁻ dan HCO₃⁻": "Salah! MnO₄²⁻ adalah Manganat dan HCO₃⁻ adalah Bikarbonat / Hidrogen Karbonat.",
+            "CrO₄²⁻ dan CO₃²⁻": "Salah! CrO₄²⁻ adalah ion Kromat.",
+            "NO₃⁻ dan SO₄²⁻": "Salah! Ini adalah ion Nitrat dan Sulfat."
+          }
+        }
+      },
+      {
+        id: 17,
+        topic: "Ikatan Kovalen Rangkap Tiga pada Gas Nitrogen",
+        question: "Gas Nitrogen (N₂) di udara sangat stabil dan sukar bereaksi pada suhu kamar. Hal ini dikarenakan molekul N₂ memiliki...",
+        options: [
+          { text: "Ikatan ionik yang sangat kuat", isCorrect: false },
+          { text: "Ikatan kovalen rangkap tiga (N≡N) dengan energi ikatan yang sangat tinggi", isCorrect: true },
+          { text: "Ukuran molekul yang sangat raksasa", isCorrect: false },
+          { text: "Gaya dispersi London yang paling besar di alam", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Sempurna! Atom N (5e⁻ valensi) berbagi 3 pasang elektron membentuk ikatan kovalen rangkap tiga (N≡N) yang sangat pendek (110 pm) dan kuat, sehingga butuh energi sangat besar untuk memutuskannya.",
+          wrongOpts: {
+            "Ikatan ionik yang sangat kuat": "Salah! N₂ terdiri dari dua non-logam homogen (ikatan kovalen nonpolar).",
+            "Ukuran molekul yang sangat raksasa": "Salah! N₂ adalah molekul diatomik kecil.",
+            "Gaya dispersi London yang paling besar di alam": "Salah! N₂ memiliki gaya London yang relatif kecil karena Mr-nya ringan."
+          }
+        }
+      },
+      {
+        id: 18,
+        topic: "Tata Nama Anion Monatomik",
+        question: "Tata nama untuk anion monatomik dari unsur Halogen (F⁻, Cl⁻, Br⁻, I⁻) dan Oksigen (O²⁻) diakhiri dengan akhiran...",
+        options: [
+          { text: "-ate", isCorrect: false },
+          { text: "-ide", isCorrect: true },
+          { text: "-ite", isCorrect: false },
+          { text: "-ous", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Mantap! Sesuai PPT 6 Slide 8: Anion monatomik diberi akhiran -ide (Fluoride F⁻, Chloride Cl⁻, Bromide Br⁻, Iodide I⁻, Oxide O²⁻, Sulfide S²⁻).",
+          wrongOpts: {
+            "-ate": "Salah! Akhiran -ate digunakan untuk oksi-anion poliatomik (Sulfate SO₄²⁻, Nitrate NO₃⁻).",
+            "-ite": "Salah! Akhiran -ite digunakan untuk oksi-anion poliatomik dengan jumlah O lebih sedikit (Sulfite SO₃²⁻, Nitrite NO₂⁻).",
+            "-ous": "Salah! Akhiran -ous digunakan untuk kation logam muatan rendah (ferrous Fe²⁺)."
+          }
+        }
+      },
+      {
+        id: 19,
+        topic: "Syarat Pembentukan Ikatan Hidrogen",
+        question: "Manakah pasangan molekul di bawah ini yang DAPAT membentuk ikatan hidrogen antar molekul sesamanya?",
+        options: [
+          { text: "CH₄ dan CO₂", isCorrect: false },
+          { text: "H₂O dan NH₃", isCorrect: true },
+          { text: "HCl dan H₂S", isCorrect: false },
+          { text: "CCl₄ dan C₂H₆", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Joss! Ikatan hidrogen HANYA terbentuk jika ada atom H terikat langsung pada unsur sangat elektronegatif F, O, atau N (seperti pada H-O di H₂O atau H-N di NH₃).",
+          wrongOpts: {
+            "CH₄ dan CO₂": "Salah! CH₄ hanya memiliki ikatan C-H dan CO₂ tidak memiliki H.",
+            "HCl dan H₂S": "Salah! Atom Cl dan S kurang elektronegatif dibanding F, O, N sehingga tidak membentuk ikatan hidrogen.",
+            "CCl₄ dan C₂H₆": "Salah! Merupakan molekul nonpolar yang hanya memiliki gaya dispersi London."
+          }
+        }
+      },
+      {
+        id: 20,
+        topic: "Logam Transisi & Titik Leleh Tinggi",
+        question: "Mengapa logam-logam transisi (seperti Besi / Fe, Kromium / Cr) memiliki titik leleh dan titik didih yang jauh LEBIH TINGGI daripada logam alkali (seperti Na)?",
+        options: [
+          { text: "Karena logam transisi tidak memiliki elektron valensi", isCorrect: false },
+          { text: "Karena ikatan logam pada logam transisi melibatkan elektron pada orbital d (3d/4d) selain orbital s, sehingga gaya tarik menarik jauh lebih kuat", isCorrect: true },
+          { text: "Karena logam transisi membentuk ikatan ionik raksasa", isCorrect: false },
+          { text: "Karena logam transisi memiliki lautan elektron yang diam dan tidak bergerak", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Luar biasa! Sesuai PPT 6 Slide 22: Logam transisi melibatkan elektron dari orbital 3d dan 4s dalam delokalisasi lautan elektron, menghasilkan tarik-menarik elektrostatik yang jauh lebih rapat dan kuat.",
+          wrongOpts: {
+            "Karena logam transisi tidak memiliki elektron valensi": "Salah! Logam transisi justru memiliki banyak elektron valensi di orbital s dan d.",
+            "Karena logam transisi membentuk ikatan ionik raksasa": "Salah! Logam murni terikat oleh ikatan logam, bukan ionik.",
+            "Karena logam transisi memiliki lautan elektron yang diam dan tidak bergerak": "Salah! Lautan elektron pada semua logam selalu terdelokalisasi dan bebas bergerak."
+          }
+        }
+      }
+    ];
+
+    let userAnswers = {};
+
+    function switchTab(tab) {
+      const vMateri = document.getElementById('view-materi');
+      const vQuiz = document.getElementById('view-quiz');
+      const navMateri = document.getElementById('nav-materi');
+      const navQuiz = document.getElementById('nav-quiz');
+      const topicMenu = document.getElementById('topic-menu');
+
+      if (tab === 'materi') {
+        vMateri.classList.remove('hidden');
+        vQuiz.classList.add('hidden');
+        topicMenu.classList.remove('hidden');
+
+        navMateri.className = "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all bg-blue-600 text-white shadow-md shadow-blue-100";
+        navQuiz.className = "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all text-slate-600 hover:bg-slate-100";
+      } else {
+        vMateri.classList.add('hidden');
+        vQuiz.classList.remove('hidden');
+        topicMenu.classList.add('hidden');
+
+        navQuiz.className = "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all bg-blue-600 text-white shadow-md shadow-blue-100";
+        navMateri.className = "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all text-slate-600 hover:bg-slate-100";
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-list-container');
+      container.innerHTML = '';
+
+      questions.forEach((q, index) => {
+        const card = document.createElement('div');
+        card.className = "glass-card rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4";
+        card.id = `q-card-${q.id}`;
+
+        let optionsHTML = '';
+        q.options.forEach((opt, optIdx) => {
+          optionsHTML += `
+            <button onclick="selectOption(${q.id}, ${optIdx})" 
+              id="opt-${q.id}-${optIdx}"
+              class="w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 transition flex items-start space-x-3 text-xs sm:text-sm text-slate-700 font-medium">
+              <span class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0 mt-0.5">
+                ${String.fromCharCode(65 + optIdx)}
+              </span>
+              <span class="flex-grow">${opt.text}</span>
+            </button>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">Soal ${index + 1} &bull; ${q.topic}</span>
+            <span id="status-${q.id}" class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-circle"></i> Belum dijawab</span>
+          </div>
+
+          <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-relaxed">${q.question}</h3>
+
+          <div class="space-y-2 pt-1">
+            ${optionsHTML}
+          </div>
+
+          <!-- Explanation Box -->
+          <div id="explanation-${q.id}" class="hidden mt-4 p-4 rounded-xl text-xs space-y-3">
+            <!-- Populated via JS -->
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function selectOption(qId, optIdx) {
+      const q = questions.find(item => item.id === qId);
+      const selected = q.options[optIdx];
+      userAnswers[qId] = optIdx;
+
+      // Update Option Styles
+      q.options.forEach((_, idx) => {
+        const btn = document.getElementById(`opt-${qId}-${idx}`);
+        btn.disabled = true;
+        btn.className = "w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm font-medium flex items-start space-x-3 transition opacity-60";
+        
+        if (idx === optIdx) {
+          if (selected.isCorrect) {
+            btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 font-bold flex items-start space-x-3";
+          } else {
+            btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-900 font-bold flex items-start space-x-3";
+          }
+        } else if (q.options[idx].isCorrect) {
+          btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50/60 text-emerald-900 font-bold flex items-start space-x-3";
+        }
+      });
+
+      // Update Status Badge
+      const statusEl = document.getElementById(`status-${qId}`);
+      if (selected.isCorrect) {
+        statusEl.className = "text-xs font-bold text-emerald-600";
+        statusEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Benar!`;
+      } else {
+        statusEl.className = "text-xs font-bold text-rose-600";
+        statusEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Kurang Tepat`;
+      }
+
+      // Build Pembahasan Detail
+      const expBox = document.getElementById(`explanation-${qId}`);
+      expBox.classList.remove('hidden');
+
+      let wrongOptsExplanation = '';
+      Object.keys(q.explanations.wrongOpts).forEach(optKey => {
+        wrongOptsExplanation += `
+          <div class="bg-white/80 p-2.5 rounded-lg border border-slate-200/80 mt-1">
+            <strong class="text-slate-800 font-semibold">&bull; Opsi "${optKey}":</strong> 
+            <span class="text-slate-600">${q.explanations.wrongOpts[optKey]}</span>
+          </div>
+        `;
+      });
+
+      if (selected.isCorrect) {
+        expBox.className = "mt-4 p-4 rounded-xl text-xs space-y-2 bg-emerald-50/80 border border-emerald-200 text-emerald-950";
+        expBox.innerHTML = `
+          <div class="flex items-center space-x-2 text-emerald-800 font-bold text-sm">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Penjelasan Jawaban Benar:</span>
+          </div>
+          <p class="leading-relaxed text-emerald-900">${q.explanations.correct}</p>
+          
+          <div class="mt-3 pt-2 border-t border-emerald-200">
+            <p class="font-bold text-slate-700 mb-1">Mengapa Pilihan Lain Kurang Tepat?</p>
+            ${wrongOptsExplanation}
+          </div>
+        `;
+      } else {
+        expBox.className = "mt-4 p-4 rounded-xl text-xs space-y-2 bg-rose-50/80 border border-rose-200 text-rose-950";
+        expBox.innerHTML = `
+          <div class="flex items-center space-x-2 text-rose-800 font-bold text-sm">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Penjelasan & Pembahasan:</span>
+          </div>
+          <p class="leading-relaxed text-rose-900"><strong>Jawaban yang benar:</strong> ${q.options.find(o => o.isCorrect).text}</p>
+          <p class="leading-relaxed text-slate-700 mt-1">${q.explanations.correct}</p>
+
+          <div class="mt-3 pt-2 border-t border-rose-200">
+            <p class="font-bold text-slate-700 mb-1">Analisis Seluruh Pilihan Jawaban:</p>
+            ${wrongOptsExplanation}
+          </div>
+        `;
+      }
+
+      updateScore();
+      if (window.MathJax) { MathJax.typesetPromise(); }
+    }
+
+    function updateScore() {
+      let correctCount = 0;
+      Object.keys(userAnswers).forEach(qId => {
+        const q = questions.find(item => item.id == qId);
+        if (q.options[userAnswers[qId]].isCorrect) {
+          correctCount++;
+        }
+      });
+      document.getElementById('score-display').innerText = `${correctCount} / ${questions.length}`;
+    }
+
+    function resetQuiz() {
+      userAnswers = {};
+      document.getElementById('score-display').innerText = `0 / ${questions.length}`;
+      renderQuiz();
+    }
+
+    // Initial render
+    window.onload = function() {
+      renderQuiz();
+    };
+  </script>
+</body>
+</html>

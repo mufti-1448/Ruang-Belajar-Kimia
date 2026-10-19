@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10264b">
+  <meta name="description" content="Pilih dan pelajari materi Kimia Dasar Pertemuan 2–7 di Ruang Belajar Araa.">
+  <title>Ruang Belajar Araa — Kimia Dasar</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #10264b;
+      --blue: #315bd6;
+      --blue-soft: #edf2ff;
+      --teal: #148b83;
+      --ink: #1b2942;
+      --muted: #61708a;
+      --line: #e2e8f1;
+      --paper: #f5f7fb;
+      --white: #fff;
+      --shadow: 0 12px 32px rgb(28 48 86 / 7%);
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    a { color: inherit; }
+    button, input, select { font: inherit; }
+    button, a, select { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid #efb74d; outline-offset: 4px; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .icon { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .site-header { background: var(--white); border-bottom: 1px solid var(--line); }
+    .header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; color: var(--navy); text-decoration: none; font-weight: 800; letter-spacing: -.025em; }
+    .brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; background: linear-gradient(140deg, var(--blue), #27a9ad); color: white; }
+    .brand-mark .icon { width: 25px; height: 25px; }
+    .main-nav { display: flex; gap: 8px; align-items: center; }
+    .main-nav a { padding: 9px 13px; border-radius: 10px; color: var(--muted); text-decoration: none; font-size: .94rem; font-weight: 650; }
+    .main-nav a:hover { color: var(--blue); background: var(--blue-soft); }
+
+    .hero { padding: 56px 0 45px; }
+    .hero-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(210px, .7fr); align-items: center; gap: 30px; padding: clamp(28px, 5vw, 56px); border-radius: 28px; color: white; background: linear-gradient(118deg, #10264b 0%, #244da7 62%, #168b83 120%); box-shadow: 0 20px 44px rgb(25 57 125 / 17%); }
+    .hero-panel::after { content: ""; position: absolute; width: 300px; height: 300px; right: 9%; top: -190px; border: 1px solid rgb(255 255 255 / 16%); border-radius: 50%; box-shadow: 0 0 0 34px rgb(255 255 255 / 4%), 0 0 0 70px rgb(255 255 255 / 3%); pointer-events: none; }
+    .hero-copy, .hero-aside { position: relative; z-index: 1; }
+    .eyebrow { margin: 0 0 10px; color: #c3d5ff; font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .hero h1 { max-width: 670px; margin: 0; font-size: clamp(2.15rem, 5vw, 3.7rem); line-height: 1.08; letter-spacing: -.045em; }
+    .hero-copy > p:not(.eyebrow) { max-width: 620px; margin: 17px 0 23px; color: #e0e9ff; font-size: 1.04rem; }
+    .primary-link { display: inline-flex; align-items: center; gap: 9px; min-height: 46px; padding: 11px 17px; border-radius: 12px; background: white; color: var(--navy); text-decoration: none; font-weight: 800; }
+    .primary-link:hover { background: #eef5ff; }
+    .hero-aside { justify-self: end; width: min(100%, 250px); padding: 21px; border: 1px solid rgb(255 255 255 / 24%); border-radius: 20px; background: rgb(255 255 255 / 9%); }
+    .hero-aside .icon { width: 35px; height: 35px; color: #b6f1e9; }
+    .hero-aside strong { display: block; margin-top: 11px; font-size: 1.04rem; }
+    .hero-aside p { margin: 5px 0 0; color: #dce7ff; font-size: .88rem; }
+
+    .materials { padding: 10px 0 62px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 19px; }
+    .section-heading h2 { margin: 0; color: var(--navy); font-size: clamp(1.55rem, 3vw, 2rem); letter-spacing: -.03em; }
+    .section-heading p { margin: 4px 0 0; color: var(--muted); }
+    .count { flex: 0 0 auto; padding: 6px 11px; border-radius: 99px; background: #e6f6f2; color: #176e68; font-size: .83rem; font-weight: 750; }
+    .tools { display: grid; grid-template-columns: minmax(230px, 1fr) minmax(180px, 245px); gap: 12px; margin: 23px 0 18px; }
+    .search-wrap { position: relative; }
+    .search-wrap .icon { position: absolute; top: 50%; left: 14px; width: 19px; height: 19px; color: #78859a; transform: translateY(-50%); pointer-events: none; }
+    .search-input, .category-select { width: 100%; min-height: 48px; border: 1px solid #d8e0ec; border-radius: 12px; background: white; color: var(--ink); }
+    .search-input { padding: 10px 14px 10px 43px; }
+    .search-input::placeholder { color: #7a879b; }
+    .category-select { padding: 10px 36px 10px 13px; }
+    .search-input:focus, .category-select:focus { border-color: var(--blue); outline: 3px solid rgb(49 91 214 / 16%); }
+    .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+    .material-card { display: flex; min-height: 245px; flex-direction: column; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); box-shadow: var(--shadow); text-decoration: none; transition: border-color .16s ease, transform .16s ease, box-shadow .16s ease; }
+    .material-card[hidden] { display: none; }
+    .material-card:hover { transform: translateY(-3px); border-color: #b5c7fa; box-shadow: 0 16px 32px rgb(28 48 86 / 11%); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 15px; }
+    .meeting { color: var(--blue); font-size: .78rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .card-icon { display: grid; width: 43px; height: 43px; flex: 0 0 auto; place-items: center; border-radius: 13px; background: var(--blue-soft); color: var(--blue); }
+    .card-icon .icon { width: 22px; height: 22px; }
+    .material-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.12rem; line-height: 1.35; letter-spacing: -.015em; }
+    .material-card p { margin: 0 0 18px; color: var(--muted); font-size: .91rem; }
+    .card-action { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--blue); font-size: .9rem; font-weight: 800; }
+    .card-action .icon { width: 17px; height: 17px; transition: transform .16s ease; }
+    .material-card:hover .card-action .icon { transform: translateX(3px); }
+    .empty-state { margin-top: 16px; padding: 30px 18px; border: 1px dashed #c8d2e2; border-radius: 16px; background: white; text-align: center; }
+    .empty-state[hidden] { display: none; }
+    .empty-state p { margin: 0 0 13px; color: var(--muted); }
+    .clear-button { border: 0; border-radius: 10px; padding: 9px 13px; background: var(--blue-soft); color: var(--blue); font-weight: 750; cursor: pointer; }
+    .clear-button:hover { background: #dfe8ff; }
+
+    .guide { padding: 0 0 66px; }
+    .guide-panel { padding: clamp(22px, 4vw, 34px); border: 1px solid var(--line); border-radius: 20px; background: white; box-shadow: var(--shadow); }
+    .guide-panel h2 { margin: 0; color: var(--navy); font-size: 1.55rem; letter-spacing: -.025em; }
+    .guide-panel > p { margin: 5px 0 21px; color: var(--muted); }
+    .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; counter-reset: steps; }
+    .steps li { position: relative; min-height: 116px; padding: 17px 15px 14px; border-radius: 14px; background: #f5f7fc; counter-increment: steps; }
+    .steps li::before { content: counter(steps, decimal-leading-zero); display: block; margin-bottom: 10px; color: var(--teal); font-size: .8rem; font-weight: 850; letter-spacing: .06em; }
+    .steps strong { display: block; color: var(--navy); font-size: .94rem; line-height: 1.4; }
+    .return-note { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0 0; padding: 13px 15px; border-radius: 12px; background: #edf8f7; color: #345d60; font-size: .9rem; }
+    .return-note .icon { flex: 0 0 auto; width: 19px; height: 19px; color: var(--teal); }
+
+    .site-footer { padding: 23px 0; border-top: 1px solid var(--line); background: white; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; }
+    .footer-brand { color: var(--navy); font-weight: 800; }
+    .footer-credit { margin: 0; color: var(--muted); font-size: .9rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 850px) {
+      .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      .header-inner { min-height: 68px; }
+      .brand { font-size: .94rem; }
+      .brand-mark { width: 38px; height: 38px; border-radius: 12px; }
+      .main-nav { gap: 0; }
+      .main-nav a { padding: 8px 9px; font-size: .84rem; }
+      .hero { padding: 26px 0 31px; }
+      .hero-panel { grid-template-columns: 1fr; gap: 22px; padding: 27px 23px; border-radius: 22px; }
+      .hero-aside { justify-self: stretch; width: auto; display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 13px; padding: 13px 15px; }
+      .hero-aside .icon { grid-row: span 2; }
+      .hero-aside strong { margin: 0; }
+      .hero-aside p { margin-top: 1px; }
+      .section-heading { align-items: flex-start; }
+      .count { margin-top: 4px; }
+      .tools { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .material-card { min-height: 0; }
+      .steps { gap: 9px; }
+      .steps li { min-height: 106px; padding: 14px 12px; }
+    }
+    @media (max-width: 370px) {
+      .main-nav a { padding-inline: 6px; font-size: .79rem; }
+      .steps { grid-template-columns: 1fr; }
+      .steps li { min-height: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+    <symbol id="icon-atom" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="1.4"></circle><ellipse cx="12" cy="12" rx="9" ry="3.7"></ellipse><ellipse cx="12" cy="12" rx="9" ry="3.7" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9" ry="3.7" transform="rotate(120 12 12)"></ellipse>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path>
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path>
+    </symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24">
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21z"></path><path d="M4 5.5v13A2.5 2.5 0 0 1 6.5 16H20"></path><path d="M8 7h8M8 10h6"></path>
+    </symbol>
+    <symbol id="icon-scale" viewBox="0 0 24 24">
+      <path d="M12 3v18M5 7h14M7 7l-4 7h8L7 7zm10 0-4 7h8l-4-7zM8 21h8"></path>
+    </symbol>
+    <symbol id="icon-orbit" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="2"></circle><path d="M4 8c2-3 14-3 16 0s-4 10-8 10S2 11 4 8z"></path><path d="M5 17c-2-3 2-11 6-12s10 3 9 6"></path>
+    </symbol>
+    <symbol id="icon-table" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18M9 4v16M15 4v16M3 15h18"></path>
+    </symbol>
+    <symbol id="icon-link" viewBox="0 0 24 24">
+      <path d="M10 13a5 5 0 0 0 7.1 0l3-3A5 5 0 0 0 13 2.9l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.1 0l-3 3A5 5 0 0 0 11 21.1l1.7-1.7"></path>
+    </symbol>
+    <symbol id="icon-flask" viewBox="0 0 24 24">
+      <path d="M9 3h6M10 3v7l-5.2 8.4A2.4 2.4 0 0 0 6.8 22h10.4a2.4 2.4 0 0 0 2-3.6L14 10V3"></path><path d="M8 15h8"></path>
+    </symbol>
+    <symbol id="icon-back" viewBox="0 0 24 24">
+      <path d="M9 14 4 9l5-5"></path><path d="M4 9h10a6 6 0 0 1 0 12h-2"></path>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./index.html" aria-label="Ruang Belajar Araa, halaman utama">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#icon-atom"></use></svg></span>
+        <span>Ruang Belajar Araa</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="#materi">Materi</a>
+        <a href="#alur-belajar">Alur Belajar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="welcome-title">
+      <div class="wrap">
+        <div class="hero-panel">
+          <div class="hero-copy">
+            <p class="eyebrow">Ruang belajar Kimia Dasar</p>
+            <h1 id="welcome-title">Selamat datang, Araa!</h1>
+            <p>Mau belajar materi apa hari ini? Pilih pertemuan, pelajari materi dengan mudah, lalu uji pemahamanmu lewat latihan interaktif.</p>
+            <a class="primary-link" href="#materi">Jelajahi materi <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          </div>
+          <aside class="hero-aside" aria-label="Informasi materi">
+            <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+            <strong>6 pertemuan tersedia</strong>
+            <p>Materi dan latihan Kimia Dasar untuk dipelajari bertahap.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="materials wrap" id="materi" aria-labelledby="materials-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="materials-title">Pilih materi belajar</h2>
+          <p>Temukan pertemuan yang ingin kamu pelajari.</p>
+        </div>
+        <span class="count" id="result-count" aria-live="polite">6 materi</span>
+      </div>
+
+      <div class="tools">
+        <div class="search-wrap">
+          <svg class="icon" aria-hidden="true"><use href="#icon-search"></use></svg>
+          <label class="sr-only" for="material-search">Cari materi berdasarkan pertemuan, judul, atau kata kunci</label>
+          <input class="search-input" id="material-search" type="search" placeholder="Cari pertemuan atau topik..." autocomplete="off" aria-controls="material-list">
+        </div>
+        <div>
+          <label class="sr-only" for="category-filter">Filter kategori materi</label>
+          <select class="category-select" id="category-filter" aria-controls="material-list">
+            <option value="all">Semua Materi</option>
+            <option value="dasar">Dasar Kimia</option>
+            <option value="atom">Atom &amp; Struktur</option>
+            <option value="periodik">Sistem Periodik</option>
+            <option value="ikatan">Ikatan Kimia</option>
+            <option value="hukum">Hukum Kimia &amp; Gas</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card-grid" id="material-list">
+        <a class="material-card" href="./Pertemuan 2/index.html" data-category="dasar" data-search="pertemuan 2 kimia dasar konsep materi satuan konversi angka penting sifat fase materi ilmu kimia metode ilmiah densitas">
+          <div class="card-top">
+            <span class="meeting">Pertemuan 2</span>
+            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-scale"></use></svg></span>
+          </div>
+          <h3>Konsep Materi, Satuan &amp; Pengukuran</h3>
+          <p>Kenali ilmu kimia, materi dan sifatnya, satuan SI, konversi, densitas, notasi saintifik, serta angka penting.</p>
+          <span class="card-action">Mulai Belajar <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+        </a>
+
+        <a class="material-card" href="./Pertemuan 3/ruang-kimia-araa.html" data-category="atom" data-search="pertemuan 3 teori atom hukum kimia perhitungan massa struktur atom isotop konfigurasi elektron">
+          <div class="card-top">
+            <span class="meeting">Pertemuan 3</span>
+            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-orbit"></use></svg></span>
+          </div>
+          <h3>Teori Atom, Hukum Kimia &amp; Struktur Atom</h3>
+          <p>Pelajari perkembangan model atom, hukum perhitungan massa, struktur atom, isotop, dan konfigurasi elektron.</p>
+          <span class="card-action">Mulai Belajar <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+        </a>
+
+        <a class="material-card" href="./Pertemuan 4/index.html" data-category="atom" data-search="pertemuan 4 mekanika kuantum spektra atom bilangan kuantum konfigurasi elektron anomali">
+          <div class="card-top">
+            <span class="meeting">Pertemuan 4</span>
+            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-atom"></use></svg></span>
+          </div>
+          <h3>Mekanika Kuantum &amp; Spektra Atom</h3>
+          <p>Bahas empat bilangan kuantum, penulisan konfigurasi elektron, dan anomali konfigurasi unsur.</p>
+          <span class="card-action">Mulai Belajar <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+        </a>
+
+        <a class="material-card" href="./Pertemuan 5/ruang-kimia-araa-pertemuan5-revisi.html" data-category="periodik" data-search="pertemuan 5 sistem periodik unsur tabel periodik logam nonlogam metaloid jari jari atom energi ionisasi afinitas elektron elektronegativitas">
+          <div class="card-top">
+            <span class="meeting">Pertemuan 5</span>
+            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-table"></use></svg></span>
+          </div>
+          <h3>Sistem Periodik Unsur</h3>
+          <p>Pahami pola sifat logam dan nonlogam serta tren periodik seperti jari-jari atom dan energi ionisasi.</p>
+          <span class="card-action">Mulai Belajar <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+        </a>
+
+        <a class="material-card" href="./Pertemuan 6/aplikasi_kimia_ppt_6.html" data-category="ikatan" data-search="pertemuan 6 ikatan kimia gaya antar molekul ikatan ionik kovalen lewis elektronegativitas momen dipol ikatan logam ikatan hidrogen">
+          <div class="card-top">
+            <span class="meeting">Pertemuan 6</span>
+            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-link"></use></svg></span>
+          </div>
+          <h3>Ikatan Kimia &amp; Gaya Antarmolekul</h3>
+          <p>Pelajari ikatan ionik, kovalen, dan logam, elektronegativitas, momen dipol, serta ikatan hidrogen.</p>
+          <span class="card-action">Mulai Belajar <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+        </a>
+
+        <a class="material-card" href="./Pertemuan 7/website_belajar_kimia_araa_pertemuan7.html" data-category="hukum" data-search="pertemuan 7 hukum dasar kimia gas lavoisier proust dalton boyle charles avogadro gas ideal">
+          <div class="card-top">
+            <span class="meeting">Pertemuan 7</span>
+            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-flask"></use></svg></span>
+          </div>
+          <h3>Hukum Dasar Kimia &amp; Hukum Gas</h3>
+          <p>Ulas hukum kekekalan massa, perbandingan tetap dan berganda, hukum gas, serta persamaan gas ideal.</p>
+          <span class="card-action">Mulai Belajar <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+        </a>
+      </div>
+
+      <div class="empty-state" id="empty-state" role="status" hidden>
+        <p>Tidak ada materi yang cocok. Coba kata kunci lain atau hapus pencarian.</p>
+        <button class="clear-button" id="clear-search" type="button">Hapus pencarian dan filter</button>
+      </div>
+    </section>
+
+    <section class="guide" id="alur-belajar" aria-labelledby="guide-title">
+      <div class="wrap">
+        <div class="guide-panel">
+          <h2 id="guide-title">Alur belajar yang sederhana</h2>
+          <p>Belajar selangkah demi selangkah, lalu cek pemahamanmu.</p>
+          <ol class="steps">
+            <li><strong>Pilih pertemuan yang ingin dipelajari.</strong></li>
+            <li><strong>Pelajari materi dan contoh yang tersedia.</strong></li>
+            <li><strong>Kerjakan quiz untuk menguji pemahaman.</strong></li>
+            <li><strong>Baca pembahasan setiap opsi jawaban.</strong></li>
+          </ol>
+          <p class="return-note"><svg class="icon" aria-hidden="true"><use href="#icon-back"></use></svg><span>Untuk kembali ke dashboard setelah membuka materi, gunakan tombol kembali pada browser.</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="footer-brand">Ruang Belajar Araa</span>
+      <p class="footer-credit">Dibuat oleh M. Khafidhin Mufti Ali</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const searchInput = document.querySelector("#material-search");
+      const categoryFilter = document.querySelector("#category-filter");
+      const cards = [...document.querySelectorAll(".material-card")];
+      const emptyState = document.querySelector("#empty-state");
+      const resultCount = document.querySelector("#result-count");
+      const clearButton = document.querySelector("#clear-search");
+
+      const normalize = (value) => value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase("id");
+
+      const updateMaterials = () => {
+        const query = normalize(searchInput.value.trim());
+        const category = categoryFilter.value;
+        let visibleCount = 0;
+
+        for (const card of cards) {
+          const matchesQuery = normalize(`${card.textContent} ${card.dataset.search}`).includes(query);
+          const matchesCategory = category === "all" || card.dataset.category === category;
+          const visible = matchesQuery && matchesCategory;
+          card.hidden = !visible;
+          if (visible) visibleCount += 1;
+        }
+
+        resultCount.textContent = `${visibleCount} materi`;
+        emptyState.hidden = visibleCount !== 0;
+      };
+
+      searchInput.addEventListener("input", updateMaterials);
+      categoryFilter.addEventListener("change", updateMaterials);
+      clearButton.addEventListener("click", () => {
+        searchInput.value = "";
+        categoryFilter.value = "all";
+        updateMaterials();
+        searchInput.focus();
+      });
+
+      updateMaterials();
+    })();
+  </script>
+</body>
+</html>

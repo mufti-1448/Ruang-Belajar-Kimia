@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belajar Kimia Araa — Pertemuan 7</title>
+<style>
+:root{--ink:#18243b;--muted:#63708a;--paper:#f5f7fb;--card:#fff;--line:#e1e7f0;--blue:#3559d8;--blue2:#eaf0ff;--teal:#168b80;--gold:#f0b44d;--red:#c94d5b;--green:#187d56;--shadow:0 12px 32px rgba(29,45,82,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(130deg,#182b57,#3559d8 70%,#6585f0);color:white;padding:34px 20px 28px}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:800;opacity:.8}.hero{display:grid;grid-template-columns:1.5fr .8fr;gap:25px;align-items:center}.hero h1{font-size:clamp(2rem,4vw,3.3rem);line-height:1.1;margin:.5rem 0}.hero p{max-width:700px;color:#e5ebff}.hero-card{border:1px solid #ffffff55;background:#ffffff12;border-radius:22px;padding:22px}.hero-card strong{display:block;font-size:1.1rem}.hero-card p{margin:.4rem 0}.credit{font-size:.9rem;color:#dbe4ff}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 4px 12px #1c31500b}
+.navinner{display:flex;gap:8px;overflow:auto;padding:10px 20px;max-width:1120px;margin:auto}
+nav button{border:0;background:transparent;color:var(--muted);font-weight:750;padding:10px 14px;border-radius:12px;white-space:nowrap;cursor:pointer}
+nav button.active,nav button:hover{background:var(--blue2);color:var(--blue)}
+main{max-width:1120px;margin:26px auto 60px;padding:0 20px}.page{display:none}.page.active{display:block}.section-head{margin:0 0 18px}.section-head h2{font-size:1.8rem;margin:0}.section-head p{color:var(--muted);margin:.25rem 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin-bottom:16px}.card h3{margin:.1rem 0 .5rem;font-size:1.22rem}.card h4{margin:1.1rem 0 .25rem}.card p{margin:.45rem 0}.tag{display:inline-block;font-size:.75rem;font-weight:800;padding:4px 9px;border-radius:999px;background:#fff0cf;color:#805500;margin-bottom:8px}.formula{background:#f0f4ff;border:1px solid #dbe4ff;border-radius:12px;padding:12px 15px;margin:12px 0;font-size:1.06rem;font-weight:750;overflow-wrap:anywhere}.analogy{border-left:4px solid var(--teal);padding:9px 13px;background:#eefaf7;border-radius:0 10px 10px 0;margin:12px 0}.callout{background:#fff7e8;border:1px solid #f7dfac;padding:14px 16px;border-radius:13px;margin:14px 0}.muted{color:var(--muted)}.steps{padding-left:22px}.steps li{margin:.35rem 0}.pillrow{display:flex;flex-wrap:wrap;gap:8px}.pill{background:#f0f3f9;border-radius:10px;padding:8px 11px;font-size:.92rem}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#f0f4ff}
+button.primary,.primary{border:0;border-radius:12px;background:var(--blue);color:white;padding:12px 17px;font-weight:800;cursor:pointer}.secondary{border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);padding:10px 14px;font-weight:750;cursor:pointer}.progress{height:8px;background:#e8edf6;border-radius:999px;overflow:hidden;margin:10px 0 18px}.progress span{display:block;height:100%;width:0;background:var(--teal);transition:width .2s}.quiztop{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.question{font-size:1.2rem;font-weight:800;line-height:1.45;margin:16px 0}.choices{display:grid;gap:10px}.choice{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;padding:13px;border:1px solid var(--line);border-radius:13px;background:white;color:var(--ink);cursor:pointer;font:inherit}.choice:hover:not(:disabled){border-color:var(--blue);background:#f7f9ff}.letter{flex:0 0 29px;height:29px;display:grid;place-items:center;background:#edf1f8;border-radius:9px;font-weight:850}.choice.correct{border-color:#74c5a3;background:#effbf5}.choice.wrong{border-color:#e49aa2;background:#fff2f3}.feedback{margin-top:16px;border-radius:14px;padding:16px;border:1px solid var(--line);background:#f8faff}.feedback.good{background:#effbf5;border-color:#b9e5d0}.feedback.bad{background:#fff4f4;border-color:#f0c1c5}.option-explain{border:1px solid #efb8bd;background:#fff0f1;border-radius:11px;padding:12px 14px;margin-top:10px}.option-explain b{display:block;margin-bottom:4px}.option-explain.is-correct{border-color:#9bd7b9;background:#eaf9f1}.option-explain.is-wrong{border-color:#efb8bd;background:#fff0f1}.option-status{display:inline-block;font-size:.78rem;font-weight:850;padding:2px 7px;border-radius:6px;margin-left:5px}.option-explain.is-correct .option-status{background:#ccefdc;color:#176b47}.option-explain.is-wrong .option-status{background:#f9d5d8;color:#9c2632}.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}.result{text-align:center;padding:30px 20px}.score{font-size:3rem;font-weight:900;color:var(--blue)}.small{font-size:.9rem}.footer{text-align:center;color:var(--muted);padding:25px 20px 45px}.hide{display:none!important}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.card{padding:17px}.wrap,main{padding-left:14px;padding-right:14px}}
+</style>
+<link rel="stylesheet" href="../shared-theme.css">
+</head>
+<body>
+<header><div class="wrap hero">
+  <div><div class="eyebrow">Ruang belajar interaktif · Kimia Dasar</div><h1>Belajar Kimia<br>bareng Araa ✦</h1>
+  <p>Pertemuan 7 — Hukum Dasar Kimia & Hukum Gas. Pahami konsepnya, lihat contoh langkah demi langkah, lalu uji pemahaman lewat quiz dengan pembahasan untuk setiap pilihan.</p>
+  <div class="credit">Dibuat oleh <strong>M. Khafidhin Mufti Ali</strong></div></div>
+  <div class="hero-card"><strong>🎯 Fokus belajar hari ini</strong><p>Hukum kekekalan massa, perbandingan tetap, kelipatan berganda, Hukum Boyle, Charles, Avogadro, dan persamaan gas ideal.</p><p class="small">Tips: pelajari materi terlebih dahulu, kemudian kerjakan quiz. Kamu bisa mengulang quiz kapan saja.</p></div>
+</div></header>
+<nav><div class="navinner">
+<button class="active" data-page="materi">📘 Materi</button><button data-page="ringkasan">🧠 Ringkasan rumus</button><button data-page="quiz">✍️ Latihan quiz</button>
+</div></nav>
+<main>
+<section class="page active" id="materi">
+  <div class="section-head"><h2>Halaman Materi</h2><p>Materi mengikuti topik pada PPT Pertemuan 7. Bagian yang relevan dengan kisi-kisi UTS diberi penekanan.</p></div>
+  <div class="card"><span class="tag">Peta belajar</span><div class="pillrow"><span class="pill">1. Kekekalan massa</span><span class="pill">2. Perbandingan tetap</span><span class="pill">3. Kelipatan berganda</span><span class="pill">4. Hukum gas</span><span class="pill">5. Gas ideal & STP</span></div></div>
+  <article class="card"><span class="tag">Bagian 1 · Prioritas UTS</span><h3>Hukum Kekekalan Massa — Lavoisier</h3>
+    <p><b>Inti konsep:</b> dalam reaksi kimia, massa total zat sebelum reaksi sama dengan massa total zat sesudah reaksi. Massa tidak diciptakan atau dimusnahkan oleh reaksi kimia biasa; atom hanya tersusun ulang.</p>
+    <div class="formula">Massa total reaktan = massa total produk</div>
+    <div class="analogy"><b>Analogi:</b> bayangkan balok LEGO yang dibongkar lalu disusun menjadi bentuk baru. Bentuknya berubah, tetapi jumlah baloknya tetap. Reaksi kimia serupa: atom-atomnya tersusun ulang.</div>
+    <h4>Eksperimen dan tokoh</h4><p>Antoine Lavoisier (1743–1794) menunjukkan hukum ini melalui eksperimen dalam wadah tertutup. Wadah tertutup membantu memastikan zat, termasuk gas, tidak keluar atau masuk selama pengukuran.</p>
+    <p>PPT juga menyebut John Priestley yang mengisolasi gas oksigen melalui pemanasan oksida merkuri:</p><div class="formula">2 HgO → 2 Hg + O₂</div>
+    <h4>Contoh hitung dari PPT</h4><p>Jika 3,25 g Hg(NO₃)₂ dan 3,32 g KI dicampurkan, produk yang dilaporkan adalah 4,55 g HgI₂ dan 2,02 g KNO₃.</p>
+    <div class="formula">Massa reaktan = 3,25 + 3,32 = 6,57 g<br>Massa produk yang dilaporkan = 4,55 + 2,02 = 6,57 g</div>
+    <p>Jumlah massanya sama, sesuai hukum kekekalan massa.</p>
+    <div class="callout"><b>Waspada:</b> bila reaksi berlangsung dalam wadah terbuka dan menghasilkan gas, massa yang terukur di wadah bisa tampak berkurang karena gas lepas ke udara. Itu bukan berarti massa benar-benar hilang dari keseluruhan sistem.</div>
+  </article>
+  <article class="card"><span class="tag">Bagian 2 · Prioritas UTS</span><h3>Hukum Perbandingan Tetap — Proust</h3>
+    <p><b>Inti konsep:</b> sampel berbeda dari senyawa kimia murni yang sama selalu memiliki perbandingan massa unsur yang sama.</p>
+    <div class="formula">Senyawa murni yang sama → rasio massa unsur tetap</div>
+    <div class="analogy"><b>Analogi:</b> resep minuman yang konsisten. Jika resep selalu memakai 1 takaran sirup untuk 8 takaran air, membuat porsi lebih besar tidak mengubah rasionya—hanya jumlah total yang berubah.</div>
+    <h4>Contoh air dan karbon dioksida</h4><ul class="steps"><li>Air, H₂O: perbandingan massa hidrogen : oksigen = <b>1 : 8</b>.</li><li>Karbon dioksida, CO₂: menurut PPT, setiap sampel memiliki perbandingan massa karbon dan oksigen sekitar <b>1 : 2,7</b>.</li></ul>
+    <p>Hukum ini berbicara tentang <b>senyawa yang sama</b>. Jumlah sampel boleh berbeda, tetapi rasio massa unsur penyusunnya tetap.</p>
+  </article>
+  <article class="card"><span class="tag">Bagian 3 · Prioritas UTS</span><h3>Teori Atom Dalton & Hukum Kelipatan Berganda</h3>
+    <p>Menurut teori atom Dalton yang dijelaskan dalam PPT:</p><ul class="steps"><li>Unsur tersusun dari partikel kecil yang disebut atom.</li><li>Atom unsur yang sama dianggap memiliki massa khas yang sama; atom dari unsur berbeda memiliki massa berbeda.</li><li>Atom bergabung dalam rasio bilangan bulat sederhana untuk membentuk senyawa.</li><li>Reaksi kimia mengubah cara atom bergabung, bukan mengubah atom menjadi atom unsur lain.</li></ul>
+    <h4>Hukum kelipatan berganda</h4><p>Jika dua unsur yang sama membentuk lebih dari satu senyawa, massa salah satu unsur yang bergabung dengan massa tetap unsur lainnya berbanding sebagai bilangan bulat sederhana.</p>
+    <div class="analogy"><b>Analogi:</b> dua bahan yang sama dapat membentuk “resep A” dan “resep B”. Jika jumlah bahan pertama dibuat tetap, jumlah bahan kedua pada kedua resep bisa berbanding 1:2, 2:3, atau rasio sederhana lain.</div>
+    <h4>Contoh nitrogen dan oksigen pada PPT</h4><div class="tablewrap"><table><thead><tr><th>Senyawa</th><th>Massa N</th><th>Massa O</th><th>Rasio N:O</th></tr></thead><tbody><tr><td>NO</td><td>7 g</td><td>8 g</td><td>7:8</td></tr><tr><td>NO₂</td><td>7 g</td><td>16 g</td><td>7:16</td></tr></tbody></table></div>
+    <p>Massa nitrogen dibuat tetap 7 g. Massa oksigen yang bergabung adalah 8 g dan 16 g, sehingga perbandingannya <b>8:16 = 1:2</b>, yaitu bilangan bulat sederhana. Ini mendukung hukum kelipatan berganda.</p>
+    <h4>Contoh metana dan propana dari PPT</h4><p>Metana: 5,70 g C dan 1,90 g H. Propana: 4,47 g C dan 0,993 g H. Hitung rasio C:H masing-masing:</p>
+    <div class="formula">Metana: 5,70 / 1,90 = 3,00<br>Propana: 4,47 / 0,993 ≈ 4,50<br>Rasio 3,00 : 4,50 = 2 : 3</div>
+    <p>Rasio sederhana 2:3 mendukung hukum kelipatan berganda pada contoh yang diberikan.</p>
+    <h4>Latihan tambahan dari PPT: senyawa sulfur dan oksigen</h4><p>Zat A dibuat dari 6,00 g sulfur dan 5,99 g oksigen. Zat B dibuat dari 8,60 g sulfur dan 12,88 g oksigen. Untuk membandingkan jumlah oksigen pada massa sulfur yang sama, hitung massa O per massa S:</p>
+    <div class="formula">A: 5,99 / 6,00 ≈ 1,00<br>B: 12,88 / 8,60 ≈ 1,50<br>Rasio ≈ 1,00 : 1,50 = 2 : 3</div>
+    <p>Rasio sederhana 2:3 menunjukkan data tersebut sesuai dengan hukum kelipatan berganda.</p>
+    <h4>Latihan tambahan dari PPT: benzena, etana, dan etilena</h4><p>Dalam 5,00 g sampel, data massa unsur pada PPT adalah:</p>
+    <div class="tablewrap"><table><thead><tr><th>Senyawa</th><th>Massa C</th><th>Massa H</th><th>H per 1 g C (≈)</th></tr></thead><tbody><tr><td>Benzena</td><td>4,61 g</td><td>0,39 g</td><td>0,0846 g</td></tr><tr><td>Etana</td><td>4,00 g</td><td>1,00 g</td><td>0,250 g</td></tr><tr><td>Etilena</td><td>4,29 g</td><td>0,71 g</td><td>0,1655 g</td></tr></tbody></table></div>
+    <p>Bandingkan massa H untuk massa C yang sama: 0,0846 : 0,1655 : 0,250 ≈ 1 : 2 : 3. Ini mendekati rasio bilangan bulat sederhana.</p>
+    <h4>Latihan tambahan dari PPT: karbon suboksida</h4><p>Sampel karbon suboksida 2,500 g mengandung 1,32 g C dan 1,18 g O. Massa oksigen per massa karbon adalah 1,18/1,32 ≈ 0,894. Dibandingkan dengan CO (16/12 ≈ 1,333) dan CO₂ (32/12 ≈ 2,667), rasio massa O per C kira-kira 0,894 : 1,333 : 2,667 ≈ 2 : 3 : 6, setelah memperhitungkan pembulatan data.</p>
+    <div class="callout"><b>Langkah mengerjakan soal:</b> (1) samakan massa salah satu unsur, (2) bandingkan massa unsur lainnya, (3) sederhanakan rasio, (4) cek apakah hasilnya mendekati bilangan bulat sederhana.</div>
+  </article>
+  <article class="card"><span class="tag">Bagian 4 · Prioritas UTS</span><h3>Hukum Boyle — Tekanan dan Volume</h3>
+    <p>Untuk jumlah gas dan suhu yang tetap, volume gas berbanding terbalik dengan tekanan. Jika tekanan naik, volume turun; jika tekanan turun, volume naik.</p>
+    <div class="formula">P₁V₁ = P₂V₂ &nbsp; atau &nbsp; PV = k</div>
+    <div class="analogy"><b>Analogi:</b> menekan suntikan tertutup dengan ujung tersumbat membuat ruang gas di dalamnya mengecil. Gas memiliki volume lebih kecil ketika tekanannya meningkat.</div>
+    <h4>Contoh kompresi mesin</h4><p>Campuran gas dikompresikan dari 1,0 atm menjadi 9,5 atm. Volume awal 410 mL. Dengan suhu dan jumlah gas tetap:</p>
+    <div class="formula">P₁V₁ = P₂V₂<br>V₂ = (P₁ × V₁) / P₂<br>V₂ = (1,0 × 410) / 9,5 ≈ 43 mL</div>
+    <p>Volume akhirnya sekitar 43 mL. Pastikan satuan tekanan konsisten.</p>
+  </article>
+  <article class="card"><span class="tag">Bagian 5 · Prioritas UTS</span><h3>Hukum Charles — Volume dan Suhu</h3>
+    <p>Ketika tekanan dan jumlah gas tetap, volume gas berbanding lurus dengan suhu absolut. Suhu dalam rumus harus memakai <b>Kelvin</b>, bukan Celsius.</p>
+    <div class="formula">V₁/T₁ = V₂/T₂ &nbsp; atau &nbsp; V/T = k</div>
+    <p>Konversi suhu: <b>T(K) = t(°C) + 273,15</b>.</p>
+    <div class="analogy"><b>Analogi:</b> gas dalam balon yang dihangatkan cenderung mengembang jika tekanannya dapat tetap sama. Partikel bergerak lebih cepat dan volume dapat meningkat.</div>
+    <h4>Contoh singkat</h4><p>Gas bervolume 2,0 L pada 300 K dipanaskan menjadi 450 K dengan tekanan tetap.</p>
+    <div class="formula">V₂ = V₁ × T₂/T₁ = 2,0 × 450/300 = 3,0 L</div>
+  </article>
+  <article class="card"><span class="tag">Bagian 6 · Prioritas UTS</span><h3>Hukum Avogadro — Volume dan Jumlah Zat</h3>
+    <p>Pada suhu dan tekanan tetap, volume gas berbanding lurus dengan jumlah zat (mol). Jika jumlah mol menjadi dua kali lipat, volumenya juga menjadi dua kali lipat.</p>
+    <div class="formula">V₁/n₁ = V₂/n₂ &nbsp; atau &nbsp; V/n = k</div>
+    <div class="analogy"><b>Analogi:</b> jika setiap kotak memiliki ukuran sama, dua kotak membutuhkan ruang dua kali lipat dari satu kotak. Dalam kondisi T dan P sama, lebih banyak mol gas berarti volume lebih besar.</div>
+    <p>PPT menyebut volume molar standar sekitar <b>22,414 L per mol</b> pada 0 °C (273,15 K) dan 1,000 atm.</p>
+  </article>
+  <article class="card"><span class="tag">Bagian 7 · Gabungan hukum gas</span><h3>Persamaan Gas Ideal dan STP</h3>
+    <div class="formula">PV = nRT</div><p>Keterangan: P = tekanan, V = volume, n = jumlah mol, R = konstanta gas, T = suhu mutlak (Kelvin).</p>
+    <div class="tablewrap"><table><thead><tr><th>Nilai R</th><th>Satuan yang cocok</th></tr></thead><tbody><tr><td>0,082</td><td>L·atm/(mol·K)</td></tr><tr><td>8,314</td><td>J/(mol·K)</td></tr></tbody></table></div>
+    <p><b>STP menurut PPT:</b> tekanan 1 atm dan suhu 0 °C (273,15 K). Pada kondisi ini, 1 mol gas ideal menempati sekitar 22,414 L.</p>
+    <h4>Contoh: mol gas di paru-paru</h4><p>Volume paru-paru 3,8 L, tekanan 1,00 atm, suhu 37 °C. Ubah suhu ke Kelvin: 37 + 273,15 = 310,15 K.</p>
+    <div class="formula">n = PV/RT = (1,00 × 3,8)/(0,082 × 310,15) ≈ 0,149 mol</div>
+    <p>Jadi, berdasarkan asumsi soal, jumlah gasnya sekitar <b>0,15 mol</b>.</p>
+    <div class="callout"><b>Kesalahan yang sering terjadi:</b> menggunakan Celsius langsung untuk T; mencampur nilai R dengan satuan yang tidak cocok; lupa bahwa Hukum Boyle, Charles, dan Avogadro masing-masing memiliki kondisi yang harus tetap.</div>
+  </article>
+  <article class="card"><h3>Tokoh yang perlu diingat</h3><div class="tablewrap"><table><thead><tr><th>Tokoh</th><th>Kontribusi dalam PPT</th></tr></thead><tbody>
+  <tr><td>Robert Boyle</td><td>Mendefinisikan unsur sebagai zat yang tidak dapat dipecah lebih lanjut secara kimia.</td></tr>
+  <tr><td>John Priestley</td><td>Mengisolasi gas O₂ melalui pemanasan oksida merkuri.</td></tr>
+  <tr><td>Antoine Lavoisier</td><td>Eksperimen wadah tertutup dan hukum kekekalan massa.</td></tr>
+  <tr><td>Joseph Proust</td><td>Mengusulkan hukum perbandingan tetap.</td></tr>
+  <tr><td>John Dalton</td><td>Teori atom dan gagasan rasio bilangan bulat sederhana dalam kombinasi atom.</td></tr>
+  <tr><td>Amadeo Avogadro</td><td>Nama yang dikaitkan dengan hubungan volume gas dan jumlah zat dalam hukum Avogadro.</td></tr>
+  <tr><td>Jacques Charles</td><td>Nama yang dikaitkan dengan hubungan volume gas dan suhu.</td></tr>
+  </tbody></table></div><p class="muted small">Catatan: tabel ini merangkum tokoh yang disebut atau terkait dengan hukum pada materi. PPT Pertemuan 7 terutama berfokus pada hukum dasar kimia dan hukum gas.</p></article>
+</section>
+<section class="page" id="ringkasan">
+  <div class="section-head"><h2>Ringkasan rumus</h2><p>Gunakan sebagai lembar kilat setelah memahami konsep.</p></div>
+  <div class="grid">
+    <div class="card"><h3>Kekekalan massa</h3><div class="formula">Σ massa reaktan = Σ massa produk</div><p class="muted">Untuk keseluruhan sistem reaksi.</p></div>
+    <div class="card"><h3>Perbandingan tetap</h3><div class="formula">Rasio massa unsur tetap</div><p class="muted">Untuk senyawa murni yang sama.</p></div>
+    <div class="card"><h3>Kelipatan berganda</h3><div class="formula">Rasio massa sederhana = bilangan bulat kecil</div><p class="muted">Dua unsur yang sama membentuk senyawa berbeda.</p></div>
+    <div class="card"><h3>Hukum Boyle</h3><div class="formula">P₁V₁ = P₂V₂</div><p class="muted">T dan n tetap.</p></div>
+    <div class="card"><h3>Hukum Charles</h3><div class="formula">V₁/T₁ = V₂/T₂</div><p class="muted">P dan n tetap; T dalam Kelvin.</p></div>
+    <div class="card"><h3>Hukum Avogadro</h3><div class="formula">V₁/n₁ = V₂/n₂</div><p class="muted">T dan P tetap.</p></div>
+    <div class="card"><h3>Gas ideal</h3><div class="formula">PV = nRT</div><p class="muted">Gunakan satuan yang cocok dengan R.</p></div>
+    <div class="card"><h3>Konversi suhu</h3><div class="formula">T(K) = t(°C) + 273,15</div><p class="muted">Jangan masukkan Celsius langsung ke hukum gas.</p></div>
+  </div>
+  <div class="card"><h3>Strategi cepat soal hitungan</h3><ol class="steps"><li>Tulis besaran yang diketahui dan yang ditanya.</li><li>Identifikasi kondisi tetap: T, P, atau n.</li><li>Pilih hukum atau rumus yang sesuai.</li><li>Samakan satuan dan ubah suhu ke Kelvin jika memakai hukum gas.</li><li>Substitusikan angka, hitung, lalu periksa apakah hasil masuk akal.</li></ol></div>
+</section>
+<section class="page" id="quiz">
+  <div class="section-head"><h2>Latihan quiz</h2><p>20 soal konsep dan hitungan. Setelah memilih jawaban, baca pembahasan untuk semua opsi, termasuk opsi yang tidak kamu pilih.</p></div>
+  <div class="card" id="quizbox">
+    <div class="quiztop"><span class="tag" id="qtopic">Materi</span><span class="muted small" id="qcount">Soal 1 dari 20</span></div>
+    <div class="progress"><span id="bar"></span></div>
+    <div class="question" id="question"></div>
+    <div class="choices" id="choices"></div>
+    <div id="feedback" class="feedback hide" aria-live="polite"></div>
+    <div class="quiz-actions"><button class="secondary" id="restart">↺ Ulangi quiz</button><button class="primary" id="next" disabled>Periksa jawaban</button></div>
+  </div>
+  <div class="card result hide" id="result"></div>
+</section>
+</main>
+<footer class="footer">Website Belajar Kimia Araa · Pertemuan 7<br>Dibuat oleh <strong>M. Khafidhin Mufti Ali</strong></footer>
+<script>
+const questions = [
+{topic:"Kekekalan massa",q:"Pernyataan yang paling tepat untuk hukum kekekalan massa adalah…",a:["Massa produk selalu lebih besar dari massa reaktan.","Massa total reaktan sama dengan massa total produk dalam reaksi kimia.","Massa atom hilang ketika reaksi berlangsung.","Hukum ini hanya berlaku jika terbentuk zat padat."],correct:1,why:["Tidak tepat: produk tidak harus lebih berat; massa total tetap sama jika seluruh zat dihitung.","Benar: atom tersusun ulang, sehingga massa total sebelum dan sesudah reaksi sama.","Tidak tepat: reaksi kimia biasa tidak memusnahkan atom atau massanya.","Tidak tepat: hukum berlaku untuk reaksi kimia secara umum, bukan hanya yang menghasilkan padatan."]},
+{topic:"Kekekalan massa",q:"Mengapa eksperimen Lavoisier menggunakan wadah tertutup?",a:["Agar gas atau zat tidak keluar-masuk sehingga massa total dapat dibandingkan.","Agar reaksi selalu berjalan lebih cepat.","Agar produk memiliki massa lebih besar.","Agar tidak perlu menimbang reaktan."],correct:0,why:["Benar: sistem tertutup membantu menghitung semua zat sebelum dan sesudah reaksi.","Tidak tepat: fungsi utama wadah tertutup dalam konteks ini adalah menjaga massa sistem, bukan mempercepat reaksi.","Tidak tepat: wadah tertutup tidak membuat massa produk bertambah.","Tidak tepat: massa tetap perlu diukur untuk membuktikan hukum."]},
+{topic:"Kekekalan massa",q:"Sebanyak 3,25 g zat A bereaksi dengan 3,32 g zat B. Jika hanya ada dua produk dan tidak ada zat yang hilang, berapa massa total produk?",a:["0,07 g","3,32 g","6,57 g","10,00 g"],correct:2,why:["Tidak tepat: 0,07 g adalah selisih massa, bukan jumlah massa reaktan.","Tidak tepat: massa produk total harus sama dengan massa total kedua reaktan.","Benar: 3,25 + 3,32 = 6,57 g.","Tidak tepat: jumlah ini tidak sama dengan massa total reaktan yang diberikan."]},
+{topic:"Perbandingan tetap",q:"Hukum perbandingan tetap menyatakan bahwa…",a:["Semua senyawa memiliki komposisi massa yang sama.","Senyawa murni yang sama selalu memiliki rasio massa unsur yang tetap.","Rasio unsur berubah setiap kali ukuran sampel berubah.","Dua unsur hanya dapat membentuk satu senyawa."],correct:1,why:["Tidak tepat: senyawa yang berbeda dapat memiliki komposisi berbeda.","Benar: itulah inti hukum perbandingan tetap yang dikaitkan dengan Proust.","Tidak tepat: jumlah sampel dapat berubah, tetapi rasio massanya tetap untuk senyawa murni yang sama.","Tidak tepat: dua unsur dapat membentuk lebih dari satu senyawa, seperti NO dan NO₂."]},
+{topic:"Perbandingan tetap",q:"Menurut materi PPT, rasio massa hidrogen : oksigen dalam air murni H₂O adalah…",a:["1 : 1","2 : 1","1 : 8","8 : 1"],correct:2,why:["Tidak tepat: rasio massa bukan rasio jumlah atom.","Tidak tepat: angka 2 pada H₂O menunjukkan jumlah atom H, bukan rasio massa H:O.","Benar: PPT menyebut rasio massa H:O pada air adalah 1:8.","Tidak tepat: urutan rasionya terbalik."]},
+{topic:"Perbandingan tetap",q:"Dua sampel air murni memiliki massa berbeda. Kesimpulan yang sesuai hukum perbandingan tetap adalah…",a:["Rasio massa H:O pada keduanya tetap sama.","Sampel yang lebih besar memiliki rasio H:O lebih besar.","Sampel kecil tidak mengikuti hukum.","Air dari tempat berbeda pasti memiliki rasio unsur berbeda."],correct:0,why:["Benar: jumlah total berbeda tidak mengubah rasio massa unsur dalam air murni.","Tidak tepat: ukuran sampel mengubah jumlah massa, bukan rasionya.","Tidak tepat: hukum berlaku untuk sampel senyawa murni, termasuk sampel kecil.","Tidak tepat: sumber air tidak mengubah komposisi kimia air murni."]},
+{topic:"Kelipatan berganda",q:"Dua unsur yang sama membentuk dua senyawa. Jika massa unsur pertama dibuat tetap, massa unsur kedua berbanding 8 g dan 16 g. Rasio sederhananya adalah…",a:["1 : 2","2 : 3","1 : 8","8 : 16 tidak dapat disederhanakan"],correct:0,why:["Benar: 8:16 dibagi 8 menjadi 1:2, rasio bilangan bulat sederhana.","Tidak tepat: 8:16 bukan 2:3.","Tidak tepat: rasio 1:8 tidak setara dengan 8:16.","Tidak tepat: 8:16 dapat disederhanakan menjadi 1:2."]},
+{topic:"Kelipatan berganda",q:"Pada contoh PPT, NO mengandung 7 g N dan 8 g O, sedangkan NO₂ mengandung 7 g N dan 16 g O. Apa rasio massa oksigen untuk massa nitrogen yang sama?",a:["1 : 1","1 : 2","2 : 3","7 : 16"],correct:1,why:["Tidak tepat: massa oksigen berbeda, yaitu 8 g dan 16 g.","Benar: 8:16 = 1:2.","Tidak tepat: 8:16 bukan 2:3.","Tidak tepat: 7:16 membandingkan massa N dan O pada satu senyawa, bukan massa O antarkedua senyawa."]},
+{topic:"Kelipatan berganda",q:"Rasio C:H pada metana dari data PPT adalah 5,70/1,90 = 3,00. Apa arti angka 3,00 tersebut?",a:["Massa karbon tiga kali massa hidrogen pada sampel itu.","Jumlah atom karbon selalu tiga kali jumlah atom hidrogen.","Massa total sampel adalah 3 gram.","Rasio ini membuktikan semua hidrokarbon sama."],correct:0,why:["Benar: perhitungan 5,70 ÷ 1,90 menunjukkan rasio massa C terhadap H sebesar 3,00:1.","Tidak tepat: yang dihitung adalah rasio massa, bukan rasio jumlah atom.","Tidak tepat: angka 3,00 adalah rasio, bukan massa total sampel.","Tidak tepat: komposisi tiap hidrokarbon berbeda; hukum membandingkan rasio pada senyawa tertentu."]},
+{topic:"Dalton",q:"Menurut teori atom Dalton yang dirangkum di PPT, apa yang terjadi pada atom dalam reaksi kimia?",a:["Atom selalu berubah menjadi unsur lain.","Atom dimusnahkan lalu dibuat kembali.","Atom bergabung ulang dengan susunan berbeda.","Semua atom menjadi bermassa sama."],correct:2,why:["Tidak tepat: reaksi kimia biasa tidak mengubah atom menjadi unsur lain.","Tidak tepat: ini bertentangan dengan gagasan kekekalan massa dalam reaksi kimia.","Benar: Dalton menjelaskan reaksi sebagai perubahan cara atom berkombinasi.","Tidak tepat: Dalton menganggap atom unsur berbeda memiliki massa khas yang berbeda."]},
+{topic:"Hukum Boyle",q:"Pada suhu dan jumlah gas tetap, tekanan gas dinaikkan. Apa yang terjadi pada volumenya menurut Hukum Boyle?",a:["Volume meningkat.","Volume menurun.","Volume tetap selalu.","Suhu harus menjadi nol."],correct:1,why:["Tidak tepat: tekanan dan volume berbanding terbalik pada kondisi ini.","Benar: tekanan naik membuat volume turun jika T dan n tetap.","Tidak tepat: volume berubah berlawanan arah dengan tekanan.","Tidak tepat: Hukum Boyle tidak mensyaratkan suhu nol, hanya suhu konstan."]},
+{topic:"Hukum Boyle",q:"Gas memiliki volume 410 mL pada 1,0 atm. Jika dikompresikan ke 9,5 atm pada suhu tetap, volume akhirnya kira-kira…",a:["43 mL","410 mL","950 mL","3.895 mL"],correct:0,why:["Benar: V₂ = P₁V₁/P₂ = (1,0×410)/9,5 ≈ 43 mL.","Tidak tepat: volume tidak tetap ketika tekanan berubah pada suhu dan jumlah gas tetap.","Tidak tepat: tekanan yang lebih tinggi seharusnya menurunkan volume, bukan menaikkannya.","Tidak tepat: hasil ini mengalikan tekanan dan volume, padahal volume akhir didapat dengan membagi P₁V₁ oleh P₂."]},
+{topic:"Hukum Charles",q:"Hukum Charles menghubungkan volume gas dengan… ketika tekanan dan jumlah gas tetap.",a:["Tekanan, secara berbanding terbalik","Suhu absolut, secara berbanding lurus","Massa molar, secara berbanding terbalik","Warna gas"],correct:1,why:["Tidak tepat: hubungan tekanan-volume berbanding terbalik adalah Hukum Boyle.","Benar: V/T konstan ketika tekanan dan jumlah gas tetap.","Tidak tepat: massa molar bukan variabel yang dibahas dalam Hukum Charles.","Tidak tepat: warna gas tidak menentukan hubungan volume-suhu."]},
+{topic:"Hukum Charles",q:"Suhu 27 °C kira-kira sama dengan berapa Kelvin?",a:["27 K","246 K","300 K","373 K"],correct:2,why:["Tidak tepat: suhu Celsius tidak langsung sama dengan Kelvin.","Tidak tepat: angka ini berasal dari pengurangan, bukan penambahan 273,15.","Benar: T = 27 + 273,15 ≈ 300 K.","Tidak tepat: 373 K kira-kira setara dengan 100 °C."]},
+{topic:"Hukum Charles",q:"Gas bervolume 2,0 L pada 300 K dipanaskan menjadi 450 K pada tekanan tetap. Volume akhir adalah…",a:["1,3 L","2,0 L","3,0 L","4,5 L"],correct:2,why:["Tidak tepat: ketika suhu naik, volume juga naik secara proporsional pada tekanan tetap.","Tidak tepat: volume tidak tetap karena suhu berubah.","Benar: V₂ = 2,0 × 450/300 = 3,0 L.","Tidak tepat: perbandingan suhu 450/300 adalah 1,5, jadi volume 2,0 L menjadi 3,0 L."]},
+{topic:"Hukum Avogadro",q:"Pada suhu dan tekanan tetap, jika jumlah mol gas menjadi dua kali lipat, volume akan…",a:["Menjadi setengahnya","Tetap sama","Menjadi dua kali lipat","Menjadi nol"],correct:2,why:["Tidak tepat: ini kebalikan dari hubungan langsung V dan n.","Tidak tepat: volume berbanding lurus dengan jumlah mol pada T dan P tetap.","Benar: V ∝ n, sehingga mol dua kali lipat membuat volume dua kali lipat.","Tidak tepat: jumlah mol yang lebih besar tidak membuat volume nol."]},
+{topic:"Hukum Avogadro",q:"Menurut angka yang dicantumkan pada PPT, volume molar gas ideal pada 0 °C dan 1 atm kira-kira…",a:["2,241 L/mol","22,414 L/mol","224,14 L/mol","1,000 L/mol"],correct:1,why:["Tidak tepat: nilainya sepuluh kali lebih kecil dari angka pada PPT.","Benar: PPT mencantumkan sekitar 22,414 L per mol pada kondisi tersebut.","Tidak tepat: nilainya sepuluh kali lebih besar dari angka pada PPT.","Tidak tepat: 1,000 atm adalah tekanan, bukan volume molar."]},
+{topic:"Gas ideal",q:"Persamaan gas ideal adalah…",a:["PV = nRT","P/V = nT","PT = nRV","P + V = nRT"],correct:0,why:["Benar: persamaan gas ideal menghubungkan P, V, n, R, dan T melalui PV=nRT.","Tidak tepat: susunan operasi ini bukan persamaan gas ideal.","Tidak tepat: persamaan ini bukan bentuk yang benar.","Tidak tepat: tekanan dan volume dikalikan, bukan dijumlahkan."]},
+{topic:"Gas ideal",q:"Dalam persamaan PV=nRT, suhu T sebaiknya dinyatakan dalam…",a:["Celsius","Fahrenheit","Kelvin","Boleh memakai satuan apa pun tanpa konversi"],correct:2,why:["Tidak tepat: skala Celsius tidak dimulai dari nol absolut.","Tidak tepat: Fahrenheit juga bukan skala absolut untuk persamaan ini.","Benar: gunakan suhu absolut dalam Kelvin.","Tidak tepat: satuan harus konsisten; suhu perlu diubah ke Kelvin."]},
+{topic:"Gas ideal",q:"Gas menempati 3,8 L pada 1,00 atm dan 310,15 K. Dengan R=0,082 L·atm/(mol·K), jumlah molnya mendekati…",a:["0,015 mol","0,15 mol","1,5 mol","15 mol"],correct:1,why:["Tidak tepat: hasil ini sekitar sepuluh kali terlalu kecil.","Benar: n=PV/RT=(1,00×3,8)/(0,082×310,15)≈0,149 mol, atau sekitar 0,15 mol.","Tidak tepat: hasil ini sekitar sepuluh kali terlalu besar.","Tidak tepat: hasil ini jauh lebih besar dari hasil substitusi rumus."]},
+{topic:"Tokoh",q:"Tokoh yang dikaitkan dengan hukum perbandingan tetap dalam PPT adalah…",a:["Joseph Proust","Antoine Lavoisier","John Dalton","John Priestley"],correct:0,why:["Benar: Joseph Proust mengusulkan hukum perbandingan tetap.","Tidak tepat: Lavoisier dikaitkan dengan hukum kekekalan massa.","Tidak tepat: Dalton dikaitkan dengan teori atom dan hukum kelipatan berganda.","Tidak tepat: Priestley dikaitkan dengan isolasi gas oksigen melalui pemanasan oksida merkuri."]}
+];
+let index=0, answers=Array(questions.length).fill(null), checked=Array(questions.length).fill(false);
+const $=id=>document.getElementById(id);
+document.querySelectorAll('nav button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));btn.classList.add('active');$(btn.dataset.page).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(btn.dataset.page==='quiz')renderQuestion();}));
+function renderQuestion(){
+  $('result').classList.add('hide');$('quizbox').classList.remove('hide');
+  const q=questions[index];$('qtopic').textContent=q.topic;$('qcount').textContent=`Soal ${index+1} dari ${questions.length}`;$('bar').style.width=`${index/questions.length*100}%`;$('question').textContent=q.q;
+  $('choices').innerHTML='';q.a.forEach((choice,i)=>{const b=document.createElement('button');b.className='choice';b.disabled=checked[index];if(checked[index]&&i===q.correct)b.classList.add('correct');if(checked[index]&&i!==q.correct)b.classList.add('wrong');const l=document.createElement('span');l.className='letter';l.textContent=String.fromCharCode(65+i);const t=document.createElement('span');t.textContent=choice;b.append(l,t);b.addEventListener('click',()=>{if(!checked[index]){answers[index]=i;document.querySelectorAll('.choice').forEach(x=>x.style.outline='');b.style.outline='2px solid var(--blue)';$('next').disabled=false;$('next').textContent='Periksa jawaban';}});if(answers[index]===i&&!checked[index])b.style.outline='2px solid var(--blue)';$('choices').appendChild(b);});
+  $('feedback').classList.add('hide');$('feedback').classList.remove('good','bad');
+  if(checked[index])showFeedback();
+  $('next').disabled=!checked[index]&&answers[index]===null;
+  $('next').textContent=checked[index]?(index===questions.length-1?'Lihat hasil':'Soal berikutnya'):'Periksa jawaban';
+  $('restart').textContent='↺ Ulangi quiz';
+}
+function showFeedback(){
+ const q=questions[index],good=answers[index]===q.correct,fb=$('feedback');fb.classList.remove('hide');fb.classList.add(good?'good':'bad');
+ let s=`<h3>${good?'Benar! 🎉':'Belum tepat — yuk pahami lagi.'}</h3><p>${good?'Pilihanmu benar.':'Jawaban yang tepat adalah <b>'+String.fromCharCode(65+q.correct)+'. '+q.a[q.correct]+'</b>.'}</p><p><b>Pembahasan semua pilihan:</b></p>`;
+ q.a.forEach((a,i)=>{const isCorrect=i===q.correct;s+=`<div class="option-explain ${isCorrect?'is-correct':'is-wrong'}"><b>${String.fromCharCode(65+i)}. ${a}<span class="option-status">${isCorrect?'Jawaban benar':'Pilihan salah'}</span></b><div>${q.why[i]}</div></div>`;});
+ fb.innerHTML=s;$('choices').querySelectorAll('button').forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.classList.add('correct');else b.classList.add('wrong');});
+ $('bar').style.width=`${(index+1)/questions.length*100}%`;$('next').disabled=false;$('next').textContent=index===questions.length-1?'Lihat hasil':'Soal berikutnya';
+}
+$('next').addEventListener('click',()=>{if(!checked[index]){if(answers[index]===null)return;checked[index]=true;showFeedback();}else if(index<questions.length-1){index++;renderQuestion();}else showResult();});
+function showResult(){const score=answers.reduce((n,a,i)=>n+(a===questions[i].correct?1:0),0);$('quizbox').classList.add('hide');$('result').classList.remove('hide');$('result').innerHTML=`<div class="eyebrow" style="color:var(--muted)">Quiz selesai</div><div class="score">${score}/${questions.length}</div><h2>${score>=17?'Hebat, Araa!':score>=12?'Bagus, terus latihan!':'Jangan menyerah, ulangi materi yang belum kuat.'}</h2><p>Kamu menjawab benar ${Math.round(score/questions.length*100)}% soal.</p><p class="muted">Tinjau kembali penjelasan opsi pada soal yang salah, lalu coba lagi untuk memperkuat pemahaman.</p><button class="primary" id="tryagain">Ulangi quiz</button>`;$('tryagain').addEventListener('click',resetQuiz);}
+function resetQuiz(){index=0;answers=Array(questions.length).fill(null);checked=Array(questions.length).fill(false);renderQuestion();}
+$('restart').addEventListener('click',resetQuiz);renderQuestion();
+</script>
+</body></html>

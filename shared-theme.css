@@ -1,0 +1,386 @@
+:root {
+  --theme-navy: #10264b;
+  --theme-blue: #315bd6;
+  --theme-blue-soft: #edf2ff;
+  --theme-teal: #148b83;
+  --theme-ink: #1b2942;
+  --theme-muted: #61708a;
+  --theme-border: #e2e8f1;
+  --theme-background: #f5f7fb;
+  --theme-surface: #ffffff;
+  --theme-success: #16804a;
+  --theme-error: #c2414b;
+  --theme-shadow: 0 12px 32px rgb(28 48 86 / 7%);
+  --ink: var(--theme-ink);
+  --muted: var(--theme-muted);
+  --blue: var(--theme-blue);
+  --bg: var(--theme-background);
+  --paper: var(--theme-background);
+  --card: var(--theme-surface);
+  --panel: var(--theme-surface);
+  --line: var(--theme-border);
+  --bd: var(--theme-border);
+  --blue2: var(--theme-blue-soft);
+  --green: var(--theme-success);
+  --red: var(--theme-error);
+  --ok: var(--theme-success);
+  --no: var(--theme-error);
+  --ac: var(--theme-blue);
+  --tx: var(--theme-ink);
+  --mu: var(--theme-muted);
+  --shadow: var(--theme-shadow);
+}
+
+html {
+  background: var(--theme-background);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--theme-background) !important;
+  color: var(--theme-ink) !important;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #efb74d;
+  outline-offset: 3px;
+}
+
+button {
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+
+body > header:not(.sticky) {
+  color: #ffffff;
+  background: linear-gradient(118deg, #10264b 0%, #244da7 62%, #168b83 120%);
+}
+
+body > header:not(.sticky) h1,
+body > header:not(.sticky) h2,
+body > header:not(.sticky) strong {
+  color: inherit;
+}
+
+body > header.sticky {
+  color: var(--theme-ink);
+  background: rgb(255 255 255 / 96%) !important;
+  border-color: var(--theme-border) !important;
+  box-shadow: 0 4px 14px rgb(28 48 86 / 5%);
+  backdrop-filter: blur(12px);
+}
+
+body > footer,
+.footer {
+  color: var(--theme-muted);
+  background: var(--theme-surface) !important;
+  border-color: var(--theme-border) !important;
+}
+
+.layout {
+  color: var(--theme-ink);
+}
+
+.toc,
+.stat,
+.panel,
+.topic-card,
+.quiz-card,
+.card,
+.lesson section,
+.glass-card,
+#quiz-list-container > div {
+  color: var(--theme-ink);
+  background-color: var(--theme-surface);
+  border-color: var(--theme-border);
+  box-shadow: var(--theme-shadow);
+}
+
+.side {
+  color: var(--theme-ink);
+  background-color: var(--theme-surface);
+  border-color: var(--theme-border);
+}
+
+.brand,
+.side h1,
+.main h1,
+.main h2,
+.main h3,
+.content h1,
+.content h2,
+.content h3,
+.lesson h2,
+.lesson h3 {
+  color: var(--theme-navy);
+}
+
+.logo,
+.brand-mark,
+.topic-icon,
+.card-icon {
+  color: #ffffff;
+  background: linear-gradient(140deg, var(--theme-blue), #27a9ad);
+}
+
+.hero,
+.gradient-hero {
+  color: #ffffff;
+  background: linear-gradient(118deg, #10264b 0%, #315bd6 64%, #148b83 120%) !important;
+}
+
+.hero h1,
+.hero h2,
+.hero h3,
+.hero strong,
+.gradient-hero h1,
+.gradient-hero h2,
+.gradient-hero h3,
+.gradient-hero strong {
+  color: #ffffff;
+}
+
+.hero p,
+.gradient-hero p {
+  color: #e0e9ff;
+}
+
+.nav.active,
+.nav:hover,
+nav button.on,
+nav button.active,
+.nav button.active,
+#nav-materi[class*="bg-indigo-600"],
+#nav-quiz[class*="bg-indigo-600"],
+#nav-materi[class*="bg-blue-600"],
+#nav-quiz[class*="bg-blue-600"] {
+  color: #ffffff !important;
+  background: var(--theme-blue) !important;
+  border-color: var(--theme-blue) !important;
+}
+
+.nav:not(.active):not(:hover),
+#nav-materi:not([class*="bg-indigo-600"]):not([class*="bg-blue-600"]),
+#nav-quiz:not([class*="bg-indigo-600"]):not([class*="bg-blue-600"]) {
+  color: var(--theme-muted);
+  background-color: transparent;
+}
+
+.btn,
+.go,
+.primary,
+button.primary {
+  color: #ffffff;
+  background: var(--theme-blue);
+  border-color: var(--theme-blue);
+}
+
+.btn:hover,
+.go:hover,
+.primary:hover,
+button.primary:hover {
+  color: #ffffff;
+  background: #2449b7;
+  border-color: #2449b7;
+}
+
+.btn.light,
+.btn.ghost,
+.secondary {
+  color: var(--theme-blue);
+  background: var(--theme-blue-soft);
+  border-color: #d7e1fb;
+}
+
+.nav a,
+.toc a,
+.topic,
+.topic-card a {
+  color: var(--theme-muted);
+}
+
+.nav a:hover,
+.toc a:hover,
+.topic:hover,
+.topic.active,
+.topic-card a:hover {
+  color: var(--theme-blue);
+  background-color: var(--theme-blue-soft);
+}
+
+.lesson section,
+.callout,
+.ex,
+.formula,
+.side-note {
+  border-radius: 14px;
+}
+
+.lesson section,
+.card,
+.glass-card,
+.topic-card,
+.quiz-card,
+.stat,
+.panel,
+.toc {
+  border-radius: 18px;
+}
+
+table,
+.mini-table,
+.tablewrap {
+  max-width: 100%;
+}
+
+table {
+  border-color: var(--theme-border);
+}
+
+th,
+td,
+.mini-table th,
+.mini-table td {
+  border-color: var(--theme-border);
+}
+
+.option,
+.choice,
+.opt,
+#quiz-list-container button {
+  min-height: 44px;
+  border-radius: 12px;
+  border-color: var(--theme-border);
+  color: var(--theme-ink);
+  background-color: var(--theme-surface);
+  cursor: pointer;
+}
+
+.option:hover:not(:disabled),
+.choice:hover:not(:disabled),
+.opt:hover:not(:disabled),
+#quiz-list-container button:hover:not(:disabled) {
+  border-color: #9bb3f0;
+  background-color: #f6f8ff;
+}
+
+.option.correct,
+.choice.correct,
+.opt.ok,
+#quiz-list-container button[class*="border-emerald-500"] {
+  border-color: #65b98c;
+  background-color: #eaf8f0;
+}
+
+.option.wrong,
+.choice.wrong,
+.opt.no,
+#quiz-list-container button[class*="border-rose-500"] {
+  border-color: #e49aa2;
+  background-color: #fff1f2;
+}
+
+.feedback.good,
+.feedback.correct {
+  border-color: #b9e5d0;
+  background-color: #effbf5;
+}
+
+.feedback.bad,
+.feedback.wrong {
+  border-color: #f0c1c5;
+  background-color: #fff4f4;
+}
+
+.bar,
+.progress {
+  background-color: #e6ebf4;
+}
+
+.bar i,
+.progress span {
+  background: linear-gradient(90deg, var(--theme-blue), var(--theme-teal));
+}
+
+.callout,
+.ex {
+  border-left-color: var(--theme-teal);
+  background-color: #edf8f7;
+}
+
+.result .score,
+.score,
+#score-display {
+  color: var(--theme-blue);
+}
+
+.search,
+input[type="search"],
+input[type="text"],
+select {
+  color: var(--theme-ink);
+  border-color: var(--theme-border);
+  border-radius: 12px;
+  background-color: var(--theme-surface);
+}
+
+@media (max-width: 760px) {
+  .side,
+  .toc {
+    position: relative;
+    height: auto;
+  }
+
+  .main,
+  .app {
+    width: 100%;
+    max-width: 1120px;
+  }
+
+  .lesson,
+  .content,
+  #quiz-list-container {
+    min-width: 0;
+  }
+
+  table,
+  .mini-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .option,
+  .choice,
+  .opt,
+  #quiz-list-container button {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

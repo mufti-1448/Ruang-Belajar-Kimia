@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimia Study Hub - Spesial untuk Araa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Konfigurasi MathJax agar membaca simbol $ untuk rumus -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <!-- MathJax Library -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .gradient-hero {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+  <link rel="stylesheet" href="../shared-theme.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col selection:bg-pink-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl gradient-hero flex items-center justify-center text-white shadow-md shadow-indigo-200">
+          <i class="fa-solid fa-flask-vial text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-slate-900 text-base sm:text-lg leading-tight">Kimia Dasar UTS Hub</h1>
+          <p class="text-xs text-indigo-600 font-semibold">PPT Pertemuan 4 + Kisi-Kisi Lengkap</p>
+        </div>
+      </div>
+      
+      <!-- Greeting Badge -->
+      <div class="flex items-center space-x-2 bg-gradient-to-r from-indigo-50 to-pink-50 border border-pink-200/60 px-3.5 py-1.5 rounded-full shadow-sm">
+        <i class="fa-solid fa-sparkles text-pink-500 text-xs"></i>
+        <span class="text-xs font-semibold text-slate-700">Khusus untuk <strong class="text-indigo-700">Araa</strong> ✨</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- Sidebar / Navigation -->
+    <aside class="lg:col-span-3 space-y-4">
+      <div class="glass-card rounded-2xl p-4 shadow-sm sticky top-20">
+        <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 px-2 mb-3">Menu Utama</p>
+        <nav class="space-y-1.5">
+          <button id="nav-materi" onclick="switchTab('materi')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100">
+            <span class="flex items-center space-x-2.5">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Ringkasan Materi</span>
+            </span>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+          <button id="nav-quiz" onclick="switchTab('quiz')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all text-slate-600 hover:bg-slate-100">
+            <span class="flex items-center space-x-2.5">
+              <i class="fa-solid fa-vial-circle-check"></i>
+              <span>Latihan Quiz + Pembahasan</span>
+            </span>
+            <span class="bg-indigo-100 text-indigo-700 text-[11px] px-2 py-0.5 rounded-full font-bold">12 Soal</span>
+          </button>
+        </nav>
+
+        <!-- Quick Topic Jump -->
+        <div id="topic-menu" class="mt-6 pt-4 border-t border-slate-100 space-y-1">
+          <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 px-2 mb-2">Topik Pelajaran</p>
+          <div class="space-y-1 text-xs max-h-[320px] overflow-y-auto custom-scrollbar pr-1">
+            <a href="#sec-ppt4" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-indigo-900 font-bold bg-indigo-50/60">⭐ PPT 4: Kuantum & Spektra</a>
+            <a href="#sec-bilangan" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-slate-600">⭐ PPT 4: 4 Bilangan Kuantum</a>
+            <a href="#sec-konfigurasi" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-slate-600">⭐ PPT 4: Aufbau, Hund & Pauli</a>
+            <a href="#sec-anomali" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-slate-600">⭐ PPT 4: Anomali Cr & Cu + Zeff</a>
+            <a href="#sec-dasar" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-slate-600">1. Konversi Satuan & Densitas</a>
+            <a href="#sec-atom" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-slate-600">2. Penemu & Teori Atom</a>
+            <a href="#sec-periodik" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-slate-600">3. Sifat Periodik Unsur</a>
+            <a href="#sec-ikatan" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-slate-600">4. Ikatan Ion & Kovalen</a>
+            <a href="#sec-hukum" class="block p-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition text-slate-600">5. Hukum Dasar Kimia</a>
+          </div>
+        </div>
+
+        <!-- Sender Note Card -->
+        <div class="mt-6 p-3.5 bg-gradient-to-br from-indigo-50 via-pink-50 to-purple-50 rounded-xl border border-indigo-100 text-center space-y-1.5">
+          <i class="fa-solid fa-heart text-pink-500 text-lg"></i>
+          <h4 class="text-xs font-bold text-slate-800">Semangat UTS ya, Araa!</h4>
+          <p class="text-[11px] text-slate-600 leading-snug">
+            Web ini khusus disiapkan oleh temanmu untuk Araa belajar lebih gampang & dapet nilai A!
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="lg:col-span-9">
+
+      <!-- VIEW 1: MATERI -->
+      <div id="view-materi" class="space-y-6">
+        
+        <!-- Welcome Banner -->
+        <div class="gradient-hero rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+          <div class="relative z-10 max-w-2xl">
+            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wider backdrop-blur-md">UTS Readiness Center</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold mt-3 leading-tight">Halo Araa! Belajar Kimia Jadi Super Mudah & Paham Full ✨</h2>
+            <p class="text-indigo-100 text-sm mt-2 leading-relaxed">
+              Materi di bawah sudah disesuaikan dengan <strong>PPT Pertemuan 4 (Clara Shabrina / McMurry)</strong> dan seluruh kisi-kisi UTS. Baca ringkasannya, pelajari konsepnya, lalu uji diri di kuis!
+            </p>
+          </div>
+        </div>
+
+        <!-- SECTION PPT 4: Mekanika Kuantum & Spektra Atom -->
+        <section id="sec-ppt4" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-indigo-600">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-indigo-700">
+              <i class="fa-solid fa-atom text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">PPT Pertemuan 4: Mekanika Kuantum & Spektra Atom</h3>
+            </div>
+            <span class="bg-indigo-100 text-indigo-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">Materi PPT Utama</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+              <h4 class="font-bold text-indigo-800 text-sm"><i class="fa-solid fa-wave-square"></i> Persamaan Gelombang Schrödinger ($\psi$)</h4>
+              <p class="text-slate-600 leading-relaxed">
+                Persamaan gelombang Schrödinger menghasilkan fungsi gelombang $(\psi)$ atau orbital. Nilai $\mathbf{\psi^2}$ mendefinisikan <strong>probabilitas (kebolehjadian) terbesar</strong> menemukan elektron dalam suatu ruang di sekitar inti.
+              </p>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+              <h4 class="font-bold text-indigo-800 text-sm"><i class="fa-solid fa-square-root-variable"></i> Persamaan Spektrum Garis Atom (Rydberg)</h4>
+              <p class="text-slate-600 leading-relaxed">
+                Digunakan untuk menghitung panjang gelombang foton saat elektron berpindah antarkulit:
+              </p>
+              <div class="bg-white p-2.5 rounded-lg border border-indigo-100 text-center font-mono font-bold text-indigo-900 text-xs">
+                $$\frac{1}{\lambda} = R \left( \frac{1}{m^2} - \frac{1}{n^2} \right)$$
+              </div>
+              <p class="text-[11px] text-slate-500">$m$ = kulit dalam (tujuan), $n$ = kulit luar (asal), $R$ = konstanta Rydberg.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION PPT 4: 4 Bilangan Kuantum -->
+        <section id="sec-bilangan" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-pink-500">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-pink-600">
+              <i class="fa-solid fa-hashtag text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">Empat Bilangan Kuantum (Aturan Lengkap)</h3>
+            </div>
+            <span class="bg-pink-100 text-pink-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">KISI-KISI UTS</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
+              <span class="font-bold text-indigo-700 text-sm">1. Utama ($n$) - Ukuran & Kulit</span>
+              <p class="text-slate-600">$n = 1, 2, 3, 4, ...$ Menentukan ukuran orbital & tingkat energi utama (Semakin besar $n$, elektron makin jauh dari inti).</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
+              <span class="font-bold text-indigo-700 text-sm">2. Azimut ($l$) - Bentuk Subkulit</span>
+              <p class="text-slate-600">Nilai $l = 0$ sampai $(n-1)$.<br>
+                Subkulit: $s (l=0)$, $p (l=1)$, $d (l=2)$, $f (l=3)$.
+              </p>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
+              <span class="font-bold text-indigo-700 text-sm">3. Magnetik ($m_l$) - Orientasi Spatial</span>
+              <p class="text-slate-600">Nilai $m_l = -l$ sampai $+l$. Menentukan kotak/orientasi orbital di dalam sumbu koordinat.</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
+              <span class="font-bold text-indigo-700 text-sm">4. Spin ($m_s$) - Arah Putaran</span>
+              <p class="text-slate-600">Panah atas ($\uparrow$) = $+\frac{1}{2}$, Panah bawah ($\downarrow$) = $-\frac{1}{2}$. Menunjukkan arah rotasi elektron.</p>
+            </div>
+          </div>
+
+          <!-- Tabel Kombinasi Diizinkan dari PPT -->
+          <div class="overflow-x-auto pt-2">
+            <p class="text-xs font-bold text-slate-700 mb-2">Kombinasi Bilangan Kuantum yang Diizinkan (PPT Table 5.2):</p>
+            <table class="w-full text-left text-xs border-collapse border border-slate-200 bg-white rounded-lg overflow-hidden">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2 border border-slate-200">$n$</th>
+                  <th class="p-2 border border-slate-200">$l$</th>
+                  <th class="p-2 border border-slate-200">$m_l$</th>
+                  <th class="p-2 border border-slate-200">Notasi Orbital</th>
+                  <th class="p-2 border border-slate-200">Jumlah Orbital Subkulit</th>
+                  <th class="p-2 border border-slate-200">Total Orbital di Kulit</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-600">
+                <tr><td class="p-2 border">1</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border font-bold text-indigo-600">1s</td><td class="p-2 border">1</td><td class="p-2 border font-bold">1</td></tr>
+                <tr class="bg-slate-50"><td class="p-2 border">2</td><td class="p-2 border">0, 1</td><td class="p-2 border">0 / -1, 0, +1</td><td class="p-2 border font-bold text-indigo-600">2s, 2p</td><td class="p-2 border">1 + 3 = 4</td><td class="p-2 border font-bold">4</td></tr>
+                <tr><td class="p-2 border">3</td><td class="p-2 border">0, 1, 2</td><td class="p-2 border">0 / -1..+1 / -2..+2</td><td class="p-2 border font-bold text-indigo-600">3s, 3p, 3d</td><td class="p-2 border">1 + 3 + 5 = 9</td><td class="p-2 border font-bold">9</td></tr>
+                <tr class="bg-slate-50"><td class="p-2 border">4</td><td class="p-2 border">0, 1, 2, 3</td><td class="p-2 border">-3 sampai +3</td><td class="p-2 border font-bold text-indigo-600">4s, 4p, 4d, 4f</td><td class="p-2 border">1 + 3 + 5 + 7 = 16</td><td class="p-2 border font-bold">16</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION PPT 4: Konfigurasi Elektron & Aturan Utama -->
+        <section id="sec-konfigurasi" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-purple-500">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-purple-600">
+              <i class="fa-solid fa-bars-staggered text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">Aturan Penulisan Konfigurasi Elektron</h3>
+            </div>
+            <span class="bg-purple-100 text-purple-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">KISI-KISI UTS</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div class="bg-purple-50/50 p-3.5 rounded-xl border border-purple-100 space-y-1">
+              <span class="font-bold text-purple-900 text-sm">1. Prinsip Aufbau</span>
+              <p class="text-slate-600">Elektron mengisi orbital dari tingkat energi terendah dulu ke energi lebih tinggi: $1s \rightarrow 2s \rightarrow 2p \rightarrow 3s \rightarrow 3p \rightarrow 4s \rightarrow 3d...$</p>
+            </div>
+            <div class="bg-purple-50/50 p-3.5 rounded-xl border border-purple-100 space-y-1">
+              <span class="font-bold text-purple-900 text-sm">2. Larangan Pauli</span>
+              <p class="text-slate-600">"Tidak boleh ada dua elektron dalam satu atom yang memiliki 4 bilangan kuantum yang sama persis." Jika orbital sama, spin harus berlawanan ($\uparrow\downarrow$).</p>
+            </div>
+            <div class="bg-purple-50/50 p-3.5 rounded-xl border border-purple-100 space-y-1">
+              <span class="font-bold text-purple-900 text-sm">3. Kaidah Hund</span>
+              <p class="text-slate-600">Jika ada orbital degenerate (energi sama), elektron mengisi satu-satu dulu dengan spin sejajar sebelum berpasangan.</p>
+            </div>
+          </div>
+
+          <!-- Keadaan Ground, Terlarang & Tereksitasi -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+            <h4 class="font-bold text-slate-800">Tipe Keadaan Elektron (Penting di PPT Slide 16-18):</h4>
+            <ul class="list-disc list-inside space-y-1.5 text-slate-600">
+              <li><strong>Keadaan Dasar (Ground State):</strong> Mengikuti Aufbau, Hund, dan Pauli. Paling stabil.</li>
+              <li><strong>Keadaan Terlarang (Forbidden State):</strong> Melanggar Larangan Pauli (misal: 2 elektron dalam 1 kotak bertanda panah sama $\uparrow\uparrow$). Kasus ini TIDAK BISA BISA TERJADI DI ALAM.</li>
+              <li><strong>Keadaan Tereksitasi (Excited State):</strong> Memenuhi Pauli tapi melanggar Aufbau/Hund (misal: elektron meloncat ke subkulit energi lebih tinggi karena menerima energi).</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SECTION PPT 4: Anomali Konfigurasi & Zeff -->
+        <section id="sec-anomali" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-teal-500">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-2 text-teal-600">
+              <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+              <h3 class="font-bold text-lg text-slate-900">Anomali Konfigurasi (Cr & Cu) & Muatan Inti Efektif ($Z_{\text{eff}}$)</h3>
+            </div>
+            <span class="bg-teal-100 text-teal-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">Sering Keluar di Soal</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-teal-50/50 p-4 rounded-xl border border-teal-100 space-y-2">
+              <h4 class="font-bold text-teal-900 text-sm">Anomali Kromium (Cr) & Tembaga (Cu)</h4>
+              <p class="text-slate-600 leading-relaxed">
+                Subkulit d lebih stabil jika terisi <strong>Setengah Penuh ($d^5$)</strong> atau <strong>Penuh ($d^{10}$)</strong>.
+              </p>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 font-mono">
+                <li>Cr (Z=24): $[Ar] 4s^2 3d^4$ &rArr; <strong>$[Ar] 4s^1 3d^5$</strong> (Setengah Penuh)</li>
+                <li>Cu (Z=29): $[Ar] 4s^2 3d^9$ &rArr; <strong>$[Ar] 4s^1 3d^{10}$</strong> (Penuh)</li>
+              </ul>
+            </div>
+
+            <div class="bg-teal-50/50 p-4 rounded-xl border border-teal-100 space-y-2">
+              <h4 class="font-bold text-teal-900 text-sm">Muatan Inti Efektif ($Z_{\text{eff}}$) & Shielding</h4>
+              <p class="text-slate-600 leading-relaxed">
+                Elektron di kulit dalam menghalangi (shielding) elektron terluar dari gaya tarik inti atom.
+              </p>
+              <div class="bg-white p-2 rounded border border-teal-200 text-center font-mono font-bold text-teal-900">
+                $$Z_{\text{eff}} = Z_{\text{sebenarnya}} - \text{Efek Perisaian (Shielding)}$$
+              </div>
+              <p class="text-[11px] text-slate-500">Akibatnya: Dari kiri ke kanan satu periode, $Z_{\text{eff}}$ meningkat sehingga jari-jari atom mengecil.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 1-5: Materi Kisi-Kisi Lainnya -->
+        <section id="sec-dasar" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-amber-500">
+          <div class="flex items-center space-x-2 text-amber-600">
+            <i class="fa-solid fa-calculator text-lg"></i>
+            <h3 class="font-bold text-lg text-slate-900">1. Konversi Satuan & Perhitungan Densitas</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <span class="font-bold text-amber-800">Rumus Densitas:</span>
+              <p class="text-slate-600 mt-1 font-mono font-bold">$$\rho = \frac{m}{V}$$</p>
+              <p class="text-slate-500 mt-1">Sering digunakan untuk menentukan kemurnian zat dan mengidentifikasi jenis larutan di laboratorium.</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <span class="font-bold text-amber-800">Konversi Satuan Suhu & Volume:</span>
+              <p class="text-slate-600 mt-1">$K = ^\circ\text{C} + 273.15$</p>
+              <p class="text-slate-600 mt-1">$1\text{ mL} = 1\text{ cm}^3 = 10^{-3}\text{ L}$</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="sec-atom" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-blue-500">
+          <div class="flex items-center space-x-2 text-blue-600">
+            <i class="fa-solid fa-users-gear text-lg"></i>
+            <h3 class="font-bold text-lg text-slate-900">2. Para Penemu & Perkembangan Atom</h3>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+            <div class="bg-blue-50/60 p-2.5 rounded-lg border border-blue-100"><strong>Dalton:</strong> Bola pejal tak terbagi</div>
+            <div class="bg-blue-50/60 p-2.5 rounded-lg border border-blue-100"><strong>Thomson:</strong> Penemu Elektron (Roti kismis)</div>
+            <div class="bg-blue-50/60 p-2.5 rounded-lg border border-blue-100"><strong>Rutherford:</strong> Penemu Inti Atom & Proton</div>
+            <div class="bg-blue-50/60 p-2.5 rounded-lg border border-blue-100"><strong>Bohr:</strong> Orbit/Lintasan Stasioner</div>
+            <div class="bg-blue-50/60 p-2.5 rounded-lg border border-blue-100"><strong>Chadwick:</strong> Penemu Neutron</div>
+            <div class="bg-blue-50/60 p-2.5 rounded-lg border border-blue-100"><strong>Schrödinger:</strong> Awan elektron orbital</div>
+          </div>
+        </section>
+
+        <section id="sec-periodik" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-emerald-500">
+          <div class="flex items-center space-x-2 text-emerald-600">
+            <i class="fa-solid fa-chart-line text-lg"></i>
+            <h3 class="font-bold text-lg text-slate-900">3. Tren Sifat Periodik Unsur</h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="bg-emerald-50/50 p-3 rounded-lg border border-emerald-100">
+              <span class="font-bold text-emerald-900">Makin ke Kiri & Makin ke Bawah:</span>
+              <p class="text-slate-600 mt-1"><strong>Jari-jari Atom</strong> membesar (jumlah kulit bertambah).</p>
+            </div>
+            <div class="bg-emerald-50/50 p-3 rounded-lg border border-emerald-100">
+              <span class="font-bold text-emerald-900">Makin ke Kanan & Makin ke Atas:</span>
+              <p class="text-slate-600 mt-1">Energi Ionisasi, Afinitas Elektron, dan Keelektronegatifan <strong>semakin membesar</strong>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="sec-ikatan" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-rose-500">
+          <div class="flex items-center space-x-2 text-rose-600">
+            <i class="fa-solid fa-link text-lg"></i>
+            <h3 class="font-bold text-lg text-slate-900">4. Ikatan Kimia (Ion & Kovalen)</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <strong class="text-rose-700">Ikatan Ion:</strong> Serah terima elektron antara Logam + Non-Logam (contoh: $\text{NaCl}, \text{MgCl}_2$). Titik leleh tinggi.
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <strong class="text-rose-700">Ikatan Kovalen:</strong> Pemakaian bersama elektron antara Non-Logam + Non-Logam (contoh: $\text{H}_2\text{O}, \text{CO}_2$).
+            </div>
+          </div>
+        </section>
+
+        <section id="sec-hukum" class="glass-card rounded-2xl p-6 shadow-sm space-y-4 border-l-4 border-sky-500">
+          <div class="flex items-center space-x-2 text-sky-600">
+            <i class="fa-solid fa-balance-scale text-lg"></i>
+            <h3 class="font-bold text-lg text-slate-900">5. Hukum-Hukum Dasar Kimia</h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="bg-sky-50/50 p-3 rounded-lg border border-sky-100">
+              <strong>Hukum Lavoisier (Kekekalan Massa):</strong> Massa sebelum reaksi = massa sesudah reaksi.
+            </div>
+            <div class="bg-sky-50/50 p-3 rounded-lg border border-sky-100">
+              <strong>Hukum Proust (Perbandingan Tetap):</strong> Perbandingan massa unsur pembentuk senyawa selalu tetap.
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Go to Quiz -->
+        <div class="bg-slate-900 text-white rounded-3xl p-6 text-center space-y-3 shadow-lg">
+          <h3 class="font-bold text-lg">Siap Latihan Soal UTS, Araa?</h3>
+          <p class="text-xs text-slate-300 max-w-lg mx-auto leading-relaxed">
+            Semua soal sudah mencakup pembahasan lengkap untuk opsi yang benar DAN penjelasan mengapa opsi lainnya salah!
+          </p>
+          <button onclick="switchTab('quiz')" class="bg-gradient-to-r from-indigo-500 to-pink-500 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:opacity-95 transition shadow-lg inline-flex items-center space-x-2">
+            <span>Buka Quiz Interaktif</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- VIEW 2: QUIZ -->
+      <div id="view-quiz" class="hidden space-y-6">
+
+        <!-- Quiz Progress Banner -->
+        <div class="glass-card rounded-2xl p-6 shadow-sm border-b-2 border-indigo-500 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Latihan Quiz UTS Kimia</span>
+            <h2 class="text-xl font-extrabold text-slate-900">Soal & Pembahasan Lengkap Tiap Opsi</h2>
+          </div>
+          <div class="flex items-center space-x-3 bg-slate-100 px-4 py-2 rounded-xl">
+            <div class="text-right">
+              <p class="text-[10px] text-slate-500 font-bold uppercase">Skor Araa</p>
+              <p id="score-display" class="text-lg font-black text-indigo-600">0 / 12</p>
+            </div>
+            <button onclick="resetQuiz()" class="text-xs bg-white text-slate-600 px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 font-semibold transition flex items-center space-x-1" title="Reset Quiz">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>Reset</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-list-container" class="space-y-6">
+          <!-- Dynamic Quiz Cards JS populated -->
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>Dibuat khusus untuk <strong class="text-slate-800">Araa</strong> &bull; Materi PPT Pertemuan 4 & Kisi-Kisi UTS Kimia</p>
+      <p class="mt-1 text-[11px] text-slate-400">Semoga UTS Kimia-nya lancar dan dapat nilai A! 🌟</p>
+    </div>
+  </footer>
+
+  <!-- Quiz Script -->
+  <script>
+    const questions = [
+      {
+        id: 1,
+        topic: "PPT 4: Anomali Konfigurasi Elektron",
+        question: "Konfigurasi elektron keadaan dasar yang tepat untuk atom Kromium (₂₄Cr) menurut materi PPT Pertemuan 4 adalah...",
+        options: [
+          { text: "[Ar] 4s² 3d⁴", isCorrect: false },
+          { text: "[Ar] 4s¹ 3d⁵", isCorrect: true },
+          { text: "[Ar] 4s⁰ 3d⁶", isCorrect: false },
+          { text: "[Ar] 4s² 3d⁵", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Sempurna! Berdasarkan PPT Pertemuan 4, Kromium mengalami anomali kestabilan subkulit d. Konfigurasi [Ar] 4s¹ 3d⁵ lebih stabil karena subkulit d terisi setengah penuh (d⁵).",
+          wrongOpts: {
+            "[Ar] 4s² 3d⁴": "Kurang tepat! Meskipun mengikuti aturan Aufbau biasa, konfigurasi ini kurang stabil dibanding kestabilan orbital d setengah penuh (d⁵).",
+            "[Ar] 4s⁰ 3d⁶": "Salah! Elektron tidak berpindah dua-duanya dari 4s ke 3d dalam keadaan dasar.",
+            "[Ar] 4s² 3d⁵": "Salah! Jumlah elektron menjadi 25 (Ini adalah konfigurasi dari Mangan / Mn)."
+          }
+        }
+      },
+      {
+        id: 2,
+        topic: "PPT 4: Empat Bilangan Kuantum",
+        question: "Suatu elektron terakhir berada pada orbital 3d³. Manakah nilai dari empat bilangan kuantum (n, l, m_l, m_s) yang diizinkan untuk elektron terakhir tersebut?",
+        options: [
+          { text: "n = 3, l = 2, m_l = 0, m_s = +1/2", isCorrect: true },
+          { text: "n = 3, l = 1, m_l = 0, m_s = +1/2", isCorrect: false },
+          { text: "n = 3, l = 2, m_l = +3, m_s = +1/2", isCorrect: false },
+          { text: "n = 2, l = 2, m_l = 0, m_s = -1/2", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Hebat! Untuk 3d³: n=3; subkulit d memiliki l=2. Kotak m_l berkisar dari -2, -1, 0, +1, +2. Elektron ke-3 mengisi kotak m_l = 0 dengan panah ke atas (m_s = +1/2).",
+          wrongOpts: {
+            "n = 3, l = 1, m_l = 0, m_s = +1/2": "Salah karena l = 1 melambangkan subkulit p, padahal soal meminta subkulit d (l=2).",
+            "n = 3, l = 2, m_l = +3, m_s = +1/2": "Salah pada nilai m_l. Untuk l = 2, batas m_l hanya dari -2 sampai +2. Nilai m_l = +3 tidak diizinkan!",
+            "n = 2, l = 2, m_l = 0, m_s = -1/2": "Salah karena untuk n = 2, nilai l maksimum hanyalah n-1 = 1 (subkulit 2d tidak pernah ada)."
+          }
+        }
+      },
+      {
+        id: 3,
+        topic: "PPT 4: Keadaan Elektron",
+        question: "Manakah di antara pilihan berikut yang menggambarkan 'Keadaan Terlarang (Forbidden State)' pada pengisian elektron?",
+        options: [
+          { text: "Elektron mengisi subkulit energi lebih tinggi sebelum subkulit energi rendah terisi penuh", isCorrect: false },
+          { text: "Dua elektron dalam satu orbital yang sama memiliki arah spin sejajar (↑↑)", isCorrect: true },
+          { text: "Elektron berpindah ke orbital lain setelah menyerap sejumlah foton energi", isCorrect: false },
+          { text: "Pengisian elektron pada orbital p yang dilakukan secara berpasangan terlebih dahulu", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Tepat! Keadaan Terlarang terjadi jika melanggar Asas Larangan Pauli, misalnya ada dua elektron dalam satu orbital dengan spin sejajar (↑↑), sehingga ke-4 bilangan kuantumnya persis sama. Ini dilarang di alam!",
+          wrongOpts: {
+            "Elektron mengisi subkulit energi lebih tinggi sebelum subkulit energi rendah terisi penuh": "Ini adalah definisi Keadaan Tereksitasi (Excited State), bukan keadaan terlarang.",
+            "Elektron berpindah ke orbital lain setelah menyerap sejumlah foton energi": "Ini adalah proses eksitasi elektron biasa.",
+            "Pengisian elektron pada orbital p yang dilakukan secara berpasangan terlebih dahulu": "Ini melanggar Kaidah Hund, yang menghasilkan Keadaan Tereksitasi, bukan Keadaan Terlarang."
+          }
+        }
+      },
+      {
+        id: 4,
+        topic: "PPT 4: Muatan Inti Efektif (Z_eff)",
+        question: "Mengapa jari-jari atom dalam satu periode dari kiri ke kanan semakin KECIL?",
+        options: [
+          { text: "Karena jumlah kulit elektron terus berkurang", isCorrect: false },
+          { text: "Karena muatan inti efektif (Z_eff) semakin besar sehingga menarik elektron lebih kuat", isCorrect: true },
+          { text: "Karena jumlah neutron di dalam inti atom berkurang", isCorrect: false },
+          { text: "Karena gaya tolak-menolak antar elektron terluar semakin hilang", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Mantap! Dari PPT Pertemuan 4: Dari kiri ke kanan dalam satu periode, jumlah proton bertambah sehingga Z_actual naik, sementara shielding dari kulit dalam tetap sama. Akibatnya Z_eff meningkat dan menarik kulit elektron lebih dekat ke inti.",
+          wrongOpts: {
+            "Karena jumlah kulit elektron terus berkurang": "Salah. Unsur-unsur dalam satu periode memiliki jumlah kulit yang SAMA.",
+            "Karena jumlah neutron di dalam inti atom berkurang": "Salah. Jumlah neutron tidak mempengaruhi jari-jari atom secara langsung.",
+            "Karena gaya tolak-menolak antar elektron terluar semakin hilang": "Salah. Tolak menolak antar elektron tetap ada, namun kalah kuat dibanding kenaikan muatan inti efektif."
+          }
+        }
+      },
+      {
+        id: 5,
+        topic: "Konversi Satuan & Densitas",
+        question: "Sebuah balok zat X berukuran 2 cm x 5 cm x 10 cm memiliki massa 270 gram. Berapakah densitas (massa jenis) zat X tersebut?",
+        options: [
+          { text: "2.7 g/cm³", isCorrect: true },
+          { text: "1.35 g/cm³", isCorrect: false },
+          { text: "27 g/cm³", isCorrect: false },
+          { text: "0.37 g/cm³", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Sempurna! Volume balok = 2 x 5 x 10 = 100 cm³. Densitas ρ = m / V = 270 g / 100 cm³ = 2.7 g/cm³.",
+          wrongOpts: {
+            "1.35 g/cm³": "Kurang tepat karena salah menghitung perkalian volume balok.",
+            "27 g/cm³": "Kurang tepat karena salah membagi dengan volume 10 cm³.",
+            "0.37 g/cm³": "Terbalik dalam menghitung formula (membagi Volume dengan Massa)."
+          }
+        }
+      },
+      {
+        id: 6,
+        topic: "Penemu Atom",
+        question: "Penemu partikel Neutron di dalam inti atom pada tahun 1932 adalah...",
+        options: [
+          { text: "J.J. Thomson", isCorrect: false },
+          { text: "Ernest Rutherford", isCorrect: false },
+          { text: "James Chadwick", isCorrect: true },
+          { text: "Niels Bohr", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Benar! James Chadwick menemukan neutron, partikel bermuatan netral yang berada di dalam inti atom bersama proton.",
+          wrongOpts: {
+            "J.J. Thomson": "Salah, Thomson menemukan Elektron via tabung sinar katoda.",
+            "Ernest Rutherford": "Salah, Rutherford menemukan Inti Atom dan Proton.",
+            "Niels Bohr": "Salah, Bohr merumuskan teori lintasan/orbit tingkat energi."
+          }
+        }
+      },
+      {
+        id: 7,
+        topic: "Konfigurasi & Periode Unsur",
+        question: "Suatu unsur memiliki nomor atom 17 (Klorin/Cl). Letak periode dan golongannya dalam tabel periodik berturut-turut adalah...",
+        options: [
+          { text: "Periode 3, Golongan VIIA (17)", isCorrect: true },
+          { text: "Periode 2, Golongan VIIA (17)", isCorrect: false },
+          { text: "Periode 3, Golongan VA (15)", isCorrect: false },
+          { text: "Periode 7, Golongan IIIA (13)", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Joss! ₁₇Cl = 1s² 2s² 2p⁶ 3s² 3p⁵. Kulit terbesar n=3 (Periode 3). Elektron valensi pada 3s² 3p⁵ adalah 2+5 = 7 (Golongan VIIA / 17).",
+          wrongOpts: {
+            "Periode 2, Golongan VIIA (17)": "Salah pada angka periode. Kulit terluar terisi adalah n=3, bukan n=2.",
+            "Periode 3, Golongan VA (15)": "Salah pada elektron valensi. Hanya menghitung 3p⁵ tanpa menambahkan 3s².",
+            "Periode 7, Golongan IIIA (13)": "Terbalik dalam menentukan elektron valensi dan nomor kulit."
+          }
+        }
+      },
+      {
+        id: 8,
+        topic: "Sifat Periodik Unsur",
+        question: "Manakah unsur di bawah ini yang memiliki nilai KEELEKTRONEGATIFAN paling tinggi?",
+        options: [
+          { text: "Natrium (Na)", isCorrect: false },
+          { text: "Klorin (Cl)", isCorrect: false },
+          { text: "Fluorin (F)", isCorrect: true },
+          { text: "Fransium (Fr)", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Pintar! Fluorin (F) berada di pojok kanan atas tabel periodik (golongan halogen) dan merupakan unsur yang paling keelektronegatifan tinggi di seluruh alam semesta (skala 4.0).",
+          wrongOpts: {
+            "Natrium (Na)": "Salah, Na adalah logam alkali di sebelah kiri yang sangat mudah melepas elektron (keelektronegatifan rendah).",
+            "Klorin (Cl)": "Salah, Cl memang tinggi tapi nilainya masih di bawah Fluorin.",
+            "Fransium (Fr)": "Salah, Fr ada di pojok kiri bawah, ia adalah unsur dengan keelektronegatifan paling rendah."
+          }
+        }
+      },
+      {
+        id: 9,
+        topic: "Ikatan Kimia",
+        question: "Senyawa manakah yang dibentuk melalui IKATAN KOVALEN?",
+        options: [
+          { text: "NaCl", isCorrect: false },
+          { text: "CO₂", isCorrect: true },
+          { text: "CaO", isCorrect: false },
+          { text: "KBr", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Tepat! CO₂ terdiri dari C (Non-logam) dan O (Non-logam), sehingga menggunakan pasangan elektron bersama (Kovalen).",
+          wrongOpts: {
+            "NaCl": "Salah, NaCl adalah senyawa ionik (Na logam + Cl non-logam).",
+            "CaO": "Salah, CaO adalah senyawa ionik (Ca logam + O non-logam).",
+            "KBr": "Salah, KBr adalah senyawa ionik (K logam + Br non-logam)."
+          }
+        }
+      },
+      {
+        id: 10,
+        topic: "Hukum Kekekalan Massa",
+        question: "Sebanyak 6 gram Karbon bereaksi sempurna dengan 16 gram Oksigen dalam ruang tertutup. Berapa massa gas Karbon Dioksida (CO₂) yang terbentuk?",
+        options: [
+          { text: "22 gram", isCorrect: true },
+          { text: "10 gram", isCorrect: false },
+          { text: "96 gram", isCorrect: false },
+          { text: "16 gram", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Sempurna! Menurut Hukum Lavoisier, total massa sebelum reaksi = total massa sesudah reaksi. Jadi massa CO₂ = 6g + 16g = 22 gram.",
+          wrongOpts: {
+            "10 gram": "Salah karena melakukan pengurangan (16 - 6).",
+            "96 gram": "Salah karena melakukan perkalian (6 x 16).",
+            "16 gram": "Salah karena hanya mengambil massa oksigen."
+          }
+        }
+      },
+      {
+        id: 11,
+        topic: "PPT 4: Orbital Nodes",
+        question: "Berdasarkan PPT Pertemuan 4, apakah yang dimaksud dengan 'Node' pada suatu orbital?",
+        options: [
+          { text: "Puncak gelombang tempat ditemukannya 100% elektron", isCorrect: false },
+          { text: "Permukaan/daerah di mana probabilitas menemukan elektron bernilai NOL", isCorrect: true },
+          { text: "Lintasan tempat elektron memancarkan energi foton", isCorrect: false },
+          { text: "Pusat dari inti atom tempat ditemukannya proton", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Hebat! Sesuai slide 11 PPT Pertemuan 4: Orbital Node adalah permukaan di mana probabilitas menemukan elektron sama dengan nol ($\\psi^2 = 0$).",
+          wrongOpts: {
+            "Puncak gelombang tempat ditemukannya 100% elektron": "Salah. Puncak gelombang adalah ampltitudo maksimum, bukan node.",
+            "Lintasan tempat elektron memancarkan energi foton": "Salah. Ini konsep Bohr, bukan definisi node gelombang.",
+            "Pusat dari inti atom tempat ditemukannya proton": "Salah. Node adalah sifat geometris fungsi gelombang elektron."
+          }
+        }
+      },
+      {
+        id: 12,
+        topic: "Hukum Perbandingan Tetap",
+        question: "Perbandingan massa C dan O dalam CO₂ adalah 3 : 8. Jika direaksikan 6 gram C dengan 20 gram Oksigen, berapa gram CO₂ maksimal yang dapat terbentuk?",
+        options: [
+          { text: "26 gram", isCorrect: false },
+          { text: "22 gram", isCorrect: true },
+          { text: "24 gram", isCorrect: false },
+          { text: "11 gram", isCorrect: false }
+        ],
+        explanations: {
+          correct: "Luar biasa! Rasio C : O = 3 : 8. Jika C = 6 gram (2x lipat), maka Oksigen yang dibutuhkan = 8 x 2 = 16 gram. Karena Oksigen ada 20g, maka Oksigen sisa 4g. Total CO₂ = 6g + 16g = 22 gram.",
+          wrongOpts: {
+            "26 gram": "Salah karena langsung dijumlahkan (6g + 20g) tanpa memperhitungkan hukum perbandingan tetap.",
+            "24 gram": "Salah perhitungan rasio.",
+            "11 gram": "Salah, ini adalah jumlah rasio dasar (3 + 8)."
+          }
+        }
+      }
+    ];
+
+    let userAnswers = {};
+
+    function switchTab(tab) {
+      const vMateri = document.getElementById('view-materi');
+      const vQuiz = document.getElementById('view-quiz');
+      const navMateri = document.getElementById('nav-materi');
+      const navQuiz = document.getElementById('nav-quiz');
+      const topicMenu = document.getElementById('topic-menu');
+
+      if (tab === 'materi') {
+        vMateri.classList.remove('hidden');
+        vQuiz.classList.add('hidden');
+        topicMenu.classList.remove('hidden');
+
+        navMateri.className = "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100";
+        navQuiz.className = "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all text-slate-600 hover:bg-slate-100";
+      } else {
+        vMateri.classList.add('hidden');
+        vQuiz.classList.remove('hidden');
+        topicMenu.classList.add('hidden');
+
+        navQuiz.className = "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-100";
+        navMateri.className = "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all text-slate-600 hover:bg-slate-100";
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-list-container');
+      container.innerHTML = '';
+
+      questions.forEach((q, index) => {
+        const card = document.createElement('div');
+        card.className = "glass-card rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4";
+        card.id = `q-card-${q.id}`;
+
+        let optionsHTML = '';
+        q.options.forEach((opt, optIdx) => {
+          optionsHTML += `
+            <button onclick="selectOption(${q.id}, ${optIdx})" 
+              id="opt-${q.id}-${optIdx}"
+              class="w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/50 transition flex items-start space-x-3 text-xs sm:text-sm text-slate-700 font-medium">
+              <span class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0 mt-0.5">
+                ${String.fromCharCode(65 + optIdx)}
+              </span>
+              <span class="flex-grow">${opt.text}</span>
+            </button>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">Soal ${index + 1} &bull; ${q.topic}</span>
+            <span id="status-${q.id}" class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-circle"></i> Belum dijawab</span>
+          </div>
+
+          <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-relaxed">${q.question}</h3>
+
+          <div class="space-y-2 pt-1">
+            ${optionsHTML}
+          </div>
+
+          <!-- Explanation Box -->
+          <div id="explanation-${q.id}" class="hidden mt-4 p-4 rounded-xl text-xs space-y-3">
+            <!-- Populated via JS -->
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function selectOption(qId, optIdx) {
+      const q = questions.find(item => item.id === qId);
+      const selected = q.options[optIdx];
+      userAnswers[qId] = optIdx;
+
+      // Update Option Styles
+      q.options.forEach((_, idx) => {
+        const btn = document.getElementById(`opt-${qId}-${idx}`);
+        btn.disabled = true;
+        btn.className = "w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm font-medium flex items-start space-x-3 transition opacity-60";
+        
+        if (idx === optIdx) {
+          if (selected.isCorrect) {
+            btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 font-bold flex items-start space-x-3";
+          } else {
+            btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-900 font-bold flex items-start space-x-3";
+          }
+        } else if (q.options[idx].isCorrect) {
+          btn.className = "w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50/60 text-emerald-900 font-bold flex items-start space-x-3";
+        }
+      });
+
+      // Update Status Badge
+      const statusEl = document.getElementById(`status-${qId}`);
+      if (selected.isCorrect) {
+        statusEl.className = "text-xs font-bold text-emerald-600";
+        statusEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Benar!`;
+      } else {
+        statusEl.className = "text-xs font-bold text-rose-600";
+        statusEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Kurang Tepat`;
+      }
+
+      // Build Pembahasan Detail
+      const expBox = document.getElementById(`explanation-${qId}`);
+      expBox.classList.remove('hidden');
+
+      let wrongOptsExplanation = '';
+      Object.keys(q.explanations.wrongOpts).forEach(optKey => {
+        wrongOptsExplanation += `
+          <div class="bg-white/80 p-2.5 rounded-lg border border-slate-200/80 mt-1">
+            <strong class="text-slate-800 font-semibold">&bull; Option "${optKey}":</strong> 
+            <span class="text-slate-600">${q.explanations.wrongOpts[optKey]}</span>
+          </div>
+        `;
+      });
+
+      if (selected.isCorrect) {
+        expBox.className = "mt-4 p-4 rounded-xl text-xs space-y-2 bg-emerald-50/80 border border-emerald-200 text-emerald-950";
+        expBox.innerHTML = `
+          <div class="flex items-center space-x-2 text-emerald-800 font-bold text-sm">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Penjelasan Jawaban Benar:</span>
+          </div>
+          <p class="leading-relaxed text-emerald-900">${q.explanations.correct}</p>
+          
+          <div class="mt-3 pt-2 border-t border-emerald-200">
+            <p class="font-bold text-slate-700 mb-1">Mengapa Pilihan Lain Kurang Tepat?</p>
+            ${wrongOptsExplanation}
+          </div>
+        `;
+      } else {
+        expBox.className = "mt-4 p-4 rounded-xl text-xs space-y-2 bg-rose-50/80 border border-rose-200 text-rose-950";
+        expBox.innerHTML = `
+          <div class="flex items-center space-x-2 text-rose-800 font-bold text-sm">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Penjelasan & Pembahasan:</span>
+          </div>
+          <p class="leading-relaxed text-rose-900"><strong>Jawaban yang benar:</strong> ${q.options.find(o => o.isCorrect).text}</p>
+          <p class="leading-relaxed text-slate-700 mt-1">${q.explanations.correct}</p>
+
+          <div class="mt-3 pt-2 border-t border-rose-200">
+            <p class="font-bold text-slate-700 mb-1">Analisis Seluruh Pilihan Jawaban:</p>
+            ${wrongOptsExplanation}
+          </div>
+        `;
+      }
+
+      updateScore();
+      if (window.MathJax) { MathJax.typesetPromise(); }
+    }
+
+    function updateScore() {
+      let correctCount = 0;
+      Object.keys(userAnswers).forEach(qId => {
+        const q = questions.find(item => item.id == qId);
+        if (q.options[userAnswers[qId]].isCorrect) {
+          correctCount++;
+        }
+      });
+      document.getElementById('score-display').innerText = `${correctCount} / ${questions.length}`;
+    }
+
+    function resetQuiz() {
+      userAnswers = {};
+      document.getElementById('score-display').innerText = `0 / ${questions.length}`;
+      renderQuiz();
+    }
+
+    // Initial render
+    window.onload = function() {
+      renderQuiz();
+    };
+  </script>
+</body>
+</html>
+```eof
+
+Sekarang kamu bisa salin kodenya ke file lamamu, masalah simbol `$n=1,2...$` akan langsung tergambar menjadi versi matematika yang cantik! Silakan di-test langsung ya.

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kimia Dasar – Pertemuan 2</title>
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--tx:#1d2733;--mu:#5c6b7a;--ac:#0f766e;--st:#b45309;--stb:#fef3c7;--ok:#15803d;--okb:#dcfce7;--no:#b91c1c;--nob:#fee2e2;--bd:#e3e8ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161d;--card:#18212b;--tx:#e8edf2;--mu:#9aa8b6;--ac:#2dd4bf;--st:#fbbf24;--stb:#3a2e0e;--ok:#4ade80;--okb:#12301d;--no:#f87171;--nob:#3b1717;--bd:#2a3644}}
+:root[data-theme="dark"]{--bg:#10161d;--card:#18212b;--tx:#e8edf2;--mu:#9aa8b6;--ac:#2dd4bf;--st:#fbbf24;--stb:#3a2e0e;--ok:#4ade80;--okb:#12301d;--no:#f87171;--nob:#3b1717;--bd:#2a3644}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{padding:24px 16px 8px;max-width:760px;margin:auto}
+h1{margin:0;font-size:1.5rem}.sub{color:var(--mu);font-size:.9rem;margin-top:4px}
+nav{display:flex;gap:8px;max-width:760px;margin:12px auto;padding:0 16px}
+nav button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+nav button.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+main{max-width:760px;margin:auto;padding:0 16px 40px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px 18px;margin:12px 0}
+.card h2{margin:0 0 6px;font-size:1.15rem}
+.star{display:inline-block;background:var(--stb);color:var(--st);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-bottom:6px}
+.ex{background:var(--bg);border-left:4px solid var(--ac);padding:8px 12px;border-radius:6px;margin:10px 0}
+.tip{color:var(--mu);font-style:italic}
+table{border-collapse:collapse;width:100%;font-size:.92rem;display:block;overflow-x:auto}td,th{border:1px solid var(--bd);padding:5px 9px;text-align:left}
+.opt{display:block;width:100%;text-align:left;padding:10px 12px;margin:8px 0;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;cursor:pointer}
+.opt:hover:not([disabled]){border-color:var(--ac)}
+.opt.ok{background:var(--okb);border-color:var(--ok)}.opt.no{background:var(--nob);border-color:var(--no)}
+.why{display:block;font-size:.88rem;margin-top:6px;color:var(--tx)}
+.mark{font-weight:700}.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+.go{padding:10px 18px;border:0;border-radius:10px;background:var(--ac);color:var(--bg);font:inherit;font-weight:700;cursor:pointer;margin-top:8px}
+footer{text-align:center;color:var(--mu);font-size:.85rem;padding:20px}
+</style><link rel="stylesheet" href="../shared-theme.css"></head><body>
+<header><h1>Kimia Dasar – Pertemuan 2</h1>
+<div class="sub">Konsep materi, satuan &amp; konversi, angka penting, sifat &amp; fase materi</div></header>
+<nav><button id="b1" class="on">📖 Materi</button><button id="b2">✏️ Latihan Soal</button></nav>
+<main id="app"></main>
+<footer>Dibuat untuk Araa oleh Ali · Sumber: PPT Kimia Dasar Pertemuan 2 (Clara Shabrina, M.Sc.)</footer>
+<script>
+// ===== DATA MATERI (⭐ = topik kisi-kisi UTS, dibahas lebih dalam) =====
+const M=[
+{t:"1. Ilmu Kimia, Materi, dan Aplikasinya",s:1,h:`<p><b>Materi</b> = apa pun yang punya <b>massa</b> dan menempati <b>ruang</b>. <b>Ilmu kimia</b> mempelajari materi: terbentuk dari apa, bagaimana sifatnya, dan bagaimana ia berubah.</p>
+<p>Bahan kimia bisa berasal dari <b>alam</b> (garam, air, mineral) atau <b>disintesis</b> di laboratorium/pabrik (plastik, obat, pupuk). Bagian terpenting kimia adalah <b>reaksi kimia</b>: senyawa saling berinteraksi dan membentuk senyawa baru yang berbeda.</p>
+<p class="tip">Analogi: kimia seperti memasak. Bahan (materi) dicampur dan dipanaskan (reaksi) sampai jadi makanan baru yang sifatnya berbeda dari bahan awalnya.</p>
+<p><b>Aplikasi kimia</b> ada di mana-mana: obat dan vitamin, pupuk, bahan bakar, sabun, plastik, makanan. Saat belajar, ingat pola “bahan awal → reaksi → bahan baru yang bermanfaat”.</p>`},
+{t:"2. Ilmu Pengetahuan dan Metode Ilmiah",h:`<p>Sains = proses mempelajari alam dengan mengamati, menguji, dan membuat model yang menjelaskan pengamatan. Urutan metode ilmiah:</p>
+<table><tr><th>Tahap</th><th>Isi</th></tr><tr><td>1. Observasi</td><td>Kualitatif (warna, bau) dan kuantitatif (angka)</td></tr><tr><td>2. Hipotesis</td><td>Penjelasan sementara (tentatif)</td></tr><tr><td>3. Eksperimen</td><td>Menguji hipotesis</td></tr><tr><td>4. Teori</td><td>Hipotesis yang berulang kali terbukti</td></tr></table>`},
+{t:"3. Satuan SI",s:1,h:`<p>SI punya <b>7 satuan dasar</b>: panjang (meter, m), massa (kilogram, kg), waktu (sekon, s), jumlah zat (mol), suhu (kelvin, K), arus listrik (ampere), intensitas cahaya (candela, cd).</p>
+<p><b>Satuan turunan</b> adalah kombinasi satuan dasar:</p>
+<table><tr><th>Besaran</th><th>Rumus</th><th>Satuan</th></tr><tr><td>Volume</td><td>panjang × lebar × tinggi</td><td>m³</td></tr><tr><td>Energi</td><td>–</td><td>Joule = kg·m²/s² (1 kal = 4,184 J)</td></tr><tr><td>Densitas</td><td>massa ÷ volume</td><td>g/mL atau g/cm³</td></tr></table>
+<p>Awalan yang sering dipakai: kilo (k) = 10³, mili (m) = 10⁻³, mikro (µ) = 10⁻⁶.</p>`},
+{t:"4. Konversi Satuan",s:1,h:`<p><b>Ide utamanya:</b> kalikan dengan <b>faktor konversi</b>, yaitu pecahan yang nilainya 1 (misalnya 10³ m / 1 km). Atur supaya satuan lama <b>tercoret</b> dan satuan baru yang tersisa.</p>
+<p class="tip">Analogi: menukar uang. Rp15.000 → dolar tidak mengubah nilainya, hanya “mata uangnya”.</p>
+<div class="ex"><b>Contoh (dari PPT):</b> 1,47 × 10⁷ mm → km<br>1 km = 10³ m dan 1 m = 10³ mm, jadi 1 km = 10⁶ mm.<br>1,47×10⁷ mm × (1 km / 10⁶ mm) = 14,7 km</div>
+<p><b>Langkah:</b> (1) tulis angka dan satuan awal, (2) cari hubungan satuan, (3) susun faktor konversi agar satuan lama tercoret, (4) hitung, lalu cek apakah hasilnya masuk akal (mm ke km → angkanya harus mengecil).</p>
+<div class="ex"><b>Pembahasan latihan PPT:</b><br>109,6 kg → µg: 1 kg = 10³ g, 1 g = 10⁶ µg, jadi 109,6 × 10⁹ = 1,096×10¹¹ µg<br>4,7×10⁷ mm → km = 47 km<br>Massa 340 mL etanol (ρ = 0,79 g/mL): 340 × 0,79 ≈ 2,7×10² g<br>Tablet vitamin C 600 mg untuk 10 g: 10 g = 10.000 mg; 10.000 ÷ 600 = 16,7 → <b>17 tablet</b> (dibulatkan ke atas agar cukup)<br>Volume larutan ρ = 1,209 g/mL dari 13.500 g: 13.500 ÷ 1,209 ≈ 1,117×10⁴ mL</div>`},
+{t:"5. Perhitungan Densitas",s:1,h:`<p><b>Densitas (massa jenis)</b> = massa ÷ volume, ditulis <b>ρ = m / V</b>. Dari rumus ini: <b>m = ρ × V</b> dan <b>V = m / ρ</b>.</p>
+<p class="tip">Analogi: sekarung kapas dan sebongkah besi yang ukurannya sama. Besi jauh lebih berat karena materinya “lebih padat” (densitasnya lebih besar).</p>
+<p><b>Tips menghindari salah rumus:</b> lihat satuannya. Densitas g/mL berarti “gram <i>per</i> mL”. Mencari gram dari mL berarti <b>dikali</b> g/mL (mL tercoret). Mencari mL dari gram berarti <b>dibagi</b> g/mL.</p>`},
+{t:"6. Pengukuran, Notasi Saintifik, dan Angka Penting",s:1,h:`<p>Kuantitas = <b>bilangan + satuan</b> (contoh: 12,57 gram). Bilangan menunjukkan banyaknya, satuan menunjukkan skala. <b>Notasi saintifik</b> menulis bilangan sangat besar/kecil secara ringkas, misalnya 0,000458 = 4,58×10⁻⁴.</p>
+<p><b>Angka penting</b> = semua digit yang pasti ditambah satu digit perkiraan di akhir. Aturan:</p>
+<table><tr><th>Jenis angka</th><th>Aturan</th><th>Contoh</th></tr>
+<tr><td>Bukan nol</td><td>Selalu penting</td><td>1,357 → 4</td></tr>
+<tr><td>Nol di tengah</td><td>Penting</td><td>405 → 3</td></tr>
+<tr><td>Nol di depan</td><td>Tidak penting</td><td>0,000458 → 3</td></tr>
+<tr><td>Nol di belakang</td><td>Penting hanya jika ada desimal</td><td>1.500 → 2; 1.500,00 → 6</td></tr></table>
+<p><b>Operasi hitung:</b></p>
+<p>• <b>Tambah/kurang:</b> hasil mengikuti jumlah <b>desimal paling sedikit</b>. 56,789 + 102,2 + 1.300,099 = 1.459,088 → <b>1.459,1</b>.<br>• <b>Kali/bagi:</b> hasil mengikuti jumlah <b>angka penting paling sedikit</b>. 38,65 (4 AP) × 105,93 (5 AP) = 4.094,1945 → <b>4.094</b>.</p>
+<p><b>Jawaban latihan PPT:</b> 7.945.000 → 4; 7.000.945 → 7; 7.000.945,00 → 9; 0,0007945 → 4; 3,14578 → 6; 2400 → 2; 45,050 → 5; 28,340 → 5.</p>`},
+{t:"7. Akurasi dan Presisi",h:`<p><b>Presisi</b>: seberapa dekat hasil pengukuran berulang satu sama lain. <b>Akurasi</b>: seberapa dekat hasil dengan nilai sebenarnya. Untuk menjaga akurasi, alat <b>dikalibrasi</b>.</p>
+<p class="tip">Analogi: lemparan ke papan dart. Anak panah menumpuk di satu sudut = presisi tinggi tapi tidak akurat. Mengenai pusat = akurat.</p>`},
+{t:"8. Sifat Materi dan Fase",h:`<p><b>Sifat fisika</b>: bisa diamati tanpa mengubah susunan kimia zat (warna, bentuk, massa, titik didih). <b>Sifat kimia</b>: kecenderungan zat mengalami perubahan kimia (mudah terbakar, berkarat).</p>
+<p><b>Fase</b> = bentuk materi dengan sifat fisika tertentu (padat, cair, gas). <b>Perubahan fase</b> adalah proses fisika (misalnya es mencair); zatnya tetap sama.</p>`},
+{t:"9. Unsur, Senyawa, dan Campuran",h:`<table><tr><th>Jenis</th><th>Ciri</th><th>Contoh</th></tr>
+<tr><td>Unsur</td><td>Tidak bisa dipecah lagi secara kimia</td><td>Al, N₂, Au, Ne, He, H, C</td></tr>
+<tr><td>Senyawa</td><td>Lebih dari satu unsur, perbandingan massa tetap</td><td>H₂O, CO₂, C₆H₁₂O₆</td></tr>
+<tr><td>Campuran homogen</td><td>Satu fase, tidak bisa dipisah fisik dengan mudah</td><td>Air garam, udara</td></tr>
+<tr><td>Campuran heterogen</td><td>Bisa dilihat/dipisah secara fisik</td><td>Tanah, kopi + ampas</td></tr></table>
+<p>Unsur dan senyawa = <b>zat murni</b> (komposisi tetap). Pada campuran, tiap zat mempertahankan identitas kimianya dan komposisinya boleh berubah-ubah.</p>`},
+{t:"10. Simbol, Rumus, Atom, Molekul, dan Persamaan Reaksi",h:`<p><b>Simbol</b> mewakili unsur (C = karbon, Ca = kalsium, Cl = klorin, Cr = kromium, Cu = tembaga, Cd = kadmium). <b>Rumus</b> mewakili senyawa (air H₂O, karbon dioksida CO₂, metana CH₄).</p>
+<p><b>Atom</b> = bagian terkecil unsur. <b>Molekul</b> = atom-atom yang berikatan. Molekul unsur: atom sejenis (N₂, O₂, H₂). Molekul senyawa: atom berbeda (CO₂, H₂O, CH₄).</p>
+<p><b>Persamaan reaksi:</b> Zn + S → ZnS. Di kiri panah = <b>reaktan</b> (Zn, S), di kanan = <b>produk</b> (ZnS). Fase: (s) padat, (l) cair, (g) gas, (aq) larutan dalam air.</p>`}
+];
+// ===== DATA QUIZ: o = pilihan, a = indeks benar, e = penjelasan SETIAP pilihan =====
+const Q=[
+{k:"Konversi",t:"1,47 × 10⁷ mm jika dikonversi ke km adalah …",o:["14,7 km","1,47 × 10¹⁰ km","1,47 × 10⁴ km","147 km"],a:0,
+e:["Benar. 1 km = 10⁶ mm, jadi 1,47×10⁷ ÷ 10⁶ = 14,7 km.","Salah. Angka membesar padahal mm ke km seharusnya mengecil. Kamu mengalikan, bukan membagi.","Salah. Itu hasil dalam meter (1 m = 10³ mm). Belum dikonversi lagi dari m ke km.","Salah. Eksponennya meleset satu tingkat; 10⁷ ÷ 10⁶ = 10¹, bukan 10²."]},
+{k:"Konversi",t:"109,6 kg sama dengan … mikrogram (µg).",o:["1,096 × 10⁵ µg","1,096 × 10⁸ µg","1,096 × 10¹¹ µg","1,096 × 10⁻⁷ µg"],a:2,
+e:["Salah. 1,096×10⁵ adalah nilai dalam gram (kg → g saja).","Salah. 1,096×10⁸ adalah nilai dalam miligram (1 kg = 10⁶ mg).","Benar. 1 kg = 10³ g dan 1 g = 10⁶ µg, jadi 1 kg = 10⁹ µg → 109,6 × 10⁹ = 1,096×10¹¹ µg.","Salah. Arah konversi terbalik. Mikrogram adalah satuan yang sangat kecil, jadi angkanya harus sangat besar."]},
+{k:"Konversi",t:"Satu tablet vitamin C berisi 600 mg. Berapa tablet minimal untuk mendapat 10 g vitamin C?",o:["6.000 tablet","0,06 tablet","16 tablet","17 tablet"],a:3,
+e:["Salah. Ini hasil 600 × 10, bukan hasil konversi satuan. 10 g = 10.000 mg, lalu dibagi 600.","Salah. Ini hasil 600 mg dibagi 10, terbalik. Yang dicari: berapa kali 600 mg muat dalam 10.000 mg.","Salah. 10.000 ÷ 600 = 16,67. Dengan 16 tablet baru dapat 9,6 g, belum cukup 10 g.","Benar. 10 g = 10.000 mg; 10.000 ÷ 600 = 16,67, dibulatkan ke atas menjadi 17 karena tablet tidak bisa dipecah dan targetnya minimal 10 g."]},
+{k:"Densitas",t:"Massa 340 mL etanol (densitas 0,79 g/mL) adalah …",o:["4,3 × 10² g","2,7 × 10² g","0,0023 g","340,79 g"],a:1,
+e:["Salah. 430 g berasal dari 340 ÷ 0,79 (V/ρ). Untuk mencari massa rumusnya m = ρ × V.","Benar. m = ρ × V = 0,79 × 340 = 268,6 g; ditulis 2 angka penting (mengikuti 0,79) menjadi 2,7×10² g.","Salah. Itu hasil 0,79 ÷ 340, membagi densitas dengan volume. Itu tidak punya arti fisika di sini.","Salah. Densitas dan volume tidak dijumlahkan; keduanya besaran berbeda satuan."]},
+{k:"Densitas",t:"Larutan berdensitas 1,209 g/mL. Volume 13.500 g larutan ini mendekati …",o:["1,63 × 10⁴ mL","1,12 × 10⁴ mL","1,35 × 10⁴ mL","9,0 × 10⁻⁵ mL"],a:1,
+e:["Salah. 16.322 berasal dari 13.500 × 1,209 (dikali). Mencari volume dari massa harus dibagi: V = m/ρ.","Benar. V = m/ρ = 13.500 ÷ 1,209 ≈ 11.166 mL ≈ 1,12×10⁴ mL. Volume lebih kecil dari angka gram karena ρ > 1.","Salah. Itu sama dengan angka massa, seolah densitasnya 1 g/mL. Padahal densitasnya 1,209.","Salah. Itu hasil 1,209 ÷ 13.500, terbalik. Satuannya juga tidak cocok."]},
+{k:"Satuan SI",t:"Satuan dasar SI untuk massa adalah …",o:["gram","kilogram","pound","mol"],a:1,
+e:["Salah. Gram turunan dari kilogram (1 g = 10⁻³ kg); satuan dasar SI-nya kilogram.","Benar. Kilogram (kg) adalah satuan dasar SI untuk massa.","Salah. Pound bukan satuan SI (sistem imperial).","Salah. Mol adalah satuan dasar untuk jumlah zat, bukan massa."]},
+{k:"Aplikasi kimia",t:"Bagian terpenting dari ilmu kimia menurut materi adalah …",o:["Mempelajari reaksi kimia","Hanya mempelajari bahan alam","Mengukur panjang dan waktu","Menghafal tabel unsur"],a:0,
+e:["Benar. Reaksi kimia adalah perubahan ketika senyawa berinteraksi membentuk senyawa baru yang berbeda.","Salah. Bahan kimia bisa dari alam maupun disintesis (obat, plastik, pupuk).","Salah. Pengukuran adalah alat bantu, bukan inti ilmunya.","Salah. Tabel unsur membantu, tetapi inti kimia adalah memahami perubahan materi."]},
+{k:"Metode ilmiah",t:"Urutan metode ilmiah yang benar adalah …",o:["Hipotesis → observasi → teori → eksperimen","Observasi → hipotesis → eksperimen → teori","Eksperimen → teori → observasi → hipotesis","Teori → hipotesis → observasi → eksperimen"],a:1,
+e:["Salah. Hipotesis dibuat setelah ada pengamatan, bukan sebelumnya.","Benar. Mengamati → menduga → menguji → hipotesis yang berulang terbukti menjadi teori.","Salah. Eksperimen butuh hipotesis yang akan diuji, jadi tidak bisa di awal.","Salah. Teori adalah hasil akhir, bukan titik awal."]},
+{k:"Angka penting",t:"Banyak angka penting pada 0,0007945 adalah …",o:["7","8","5","4"],a:3,
+e:["Salah. Itu menghitung nol di depan, padahal nol di depan tidak penting.","Salah. Itu menghitung semua digit, termasuk nol di depan.","Salah. Hanya 4 digit bukan nol (7, 9, 4, 5), tidak ada lima yang penting.","Benar. Nol di depan tidak signifikan; yang penting hanya 7, 9, 4, 5."]},
+{k:"Angka penting",t:"Banyak angka penting pada 45,050 adalah …",o:["3","4","5","6"],a:2,
+e:["Salah. Itu membuang nol di tengah dan di belakang; keduanya penting di sini.","Salah. Nol di belakang penting karena bilangan punya tanda desimal.","Benar. 4, 5, 0, 5, 0 semuanya penting: nol di tengah penting, dan nol di akhir penting karena ada desimal.","Salah. Tanda koma desimal bukan digit, jadi tidak dihitung."]},
+{k:"Angka penting",t:"56,789 + 102,2 + 1.300,099 dengan aturan angka penting menghasilkan …",o:["1.459,088","1.459","1.459,1","1.460"],a:2,
+e:["Salah. Itu hasil kalkulator tanpa pembulatan. Penjumlahan dibatasi oleh data dengan desimal paling sedikit.","Salah. Dibulatkan terlalu jauh; desimal paling sedikit adalah satu angka (102,2).","Benar. Pada penjumlahan, hasil mengikuti jumlah desimal paling sedikit, yaitu 1 desimal.","Salah. Pembulatan sampai puluhan tidak ada dasarnya dalam aturan."]},
+{k:"Angka penting",t:"38,65 × 105,93 = 4.094,1945. Hasil dengan angka penting yang benar adalah …",o:["4.094,1945","4.094,19","4.100","4.094"],a:3,
+e:["Salah. Itu angka kalkulator; perkalian harus dibatasi.","Salah. Itu 6 angka penting; terlalu banyak.","Salah. Itu hanya 2 angka penting, padahal data terkecil punya 4.","Benar. Angka penting paling sedikit dalam data adalah 4 (38,65), jadi hasil 4 angka penting: 4.094."]},
+{k:"Akurasi & presisi",t:"Nilai sebenarnya 8,00 g. Tiga kali ditimbang: 5,01 g, 5,02 g, 5,00 g. Pengukuran ini …",o:["Akurat dan presisi","Akurat tetapi tidak presisi","Presisi tetapi tidak akurat","Tidak akurat dan tidak presisi"],a:2,
+e:["Salah. Hasil jauh dari 8,00 g, jadi tidak akurat.","Salah. Presisinya justru tinggi karena hasil saling berdekatan.","Benar. Hasil berdekatan (presisi), tetapi jauh dari 8,00 g (tidak akurat). Mungkin alat belum dikalibrasi.","Salah. Ketiga hasil sangat berdekatan, jadi presisi tinggi."]},
+{k:"Sifat materi",t:"Manakah yang merupakan sifat kimia?",o:["Titik didih air","Besi berkarat","Warna tembaga","Massa sebatang kayu"],a:1,
+e:["Salah. Titik didih diukur tanpa mengubah zatnya, jadi sifat fisika.","Benar. Berkarat berarti besi bereaksi dan berubah menjadi zat baru, jadi sifat kimia.","Salah. Warna bisa diamati tanpa mengubah zat, jadi sifat fisika.","Salah. Massa adalah sifat fisika."]},
+{k:"Unsur & senyawa",t:"C₆H₁₂O₆ (glukosa) termasuk …",o:["Unsur","Senyawa","Campuran homogen","Atom"],a:1,
+e:["Salah. Unsur hanya terdiri dari satu jenis atom; di sini ada C, H, dan O.","Benar. Tersusun dari lebih dari satu unsur dengan perbandingan massa tetap.","Salah. Campuran bisa berubah komposisinya; rumus ini menunjukkan komposisi tetap.","Salah. Atom adalah partikel terkecil unsur; C₆H₁₂O₆ adalah molekul."]},
+{k:"Campuran",t:"Air garam termasuk …",o:["Campuran heterogen","Senyawa","Unsur","Campuran homogen"],a:3,
+e:["Salah. Pada air garam yang larut sempurna tidak ada bagian terlihat yang terpisah.","Salah. Air dan garam tetap punya identitas kimia masing-masing dan komposisinya bisa berubah-ubah.","Salah. Ada lebih dari satu zat (air dan garam).","Benar. Garam larut seragam dalam air sehingga tampak satu fase."]}
+];
+// ===== TAMPILAN =====
+const app=document.getElementById("app");
+const $=(id)=>document.getElementById(id);
+function showMateri(){
+ $("b1").className="on";$("b2").className="";
+ app.innerHTML=`<div class="card"><b>Cara belajar:</b> baca materi bertanda <span class="star">⭐ Kisi-kisi UTS</span> lebih teliti (konversi satuan, aplikasi kimia, densitas), lalu kerjakan Latihan Soal.</div>`+
+ M.map(m=>`<section class="card">${m.s?'<span class="star">⭐ Kisi-kisi UTS</span>':''}<h2>${m.t}</h2>${m.h}</section>`).join("");
+ scrollTo(0,0);
+}
+let i=0,sc=0,done=false;
+function showQuiz(){
+ $("b2").className="on";$("b1").className="";i=0;sc=0;render();
+}
+function render(){
+ if(i>=Q.length){
+  app.innerHTML=`<div class="card"><h2>Selesai! Skor: ${sc} / ${Q.length}</h2><p>${sc>=Q.length*0.8?"Mantap, pemahamanmu sudah kuat.":"Baca ulang bagian materi yang masih salah, lalu coba lagi."}</p><button class="go" id="rs">Ulangi Quiz</button></div>`;
+  $("rs").onclick=showQuiz;return;
+ }
+ const q=Q[i];done=false;
+ app.innerHTML=`<div class="card"><div class="bar"><i style="width:${i/Q.length*100}%"></i></div>
+ <p class="sub">Soal ${i+1} dari ${Q.length} · ${q.k}</p><h2>${q.t}</h2><div id="ops">`+
+ q.o.map((o,j)=>`<button class="opt" data-j="${j}">${"ABCD"[j]}. ${o}</button>`).join("")+`</div><div id="nx"></div></div>`;
+ document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>pick(+b.dataset.j));
+}
+function pick(j){
+ if(done)return;done=true;const q=Q[i];if(j===q.a)sc++;
+ document.querySelectorAll(".opt").forEach((b,k)=>{
+  b.disabled=true;
+  if(k===q.a)b.classList.add("ok");else if(k===j)b.classList.add("no");
+  const tag=k===q.a?"✅":(k===j?"❌ (pilihanmu)":"✖");
+  b.innerHTML+=`<span class="why"><span class="mark">${tag}</span> ${q.e[k]}</span>`;
+ });
+ $("nx").innerHTML=`<button class="go" id="n">${i+1<Q.length?"Soal berikutnya →":"Lihat skor"}</button>`;
+ $("n").onclick=()=>{i++;render();scrollTo(0,0)};
+}
+$("b1").onclick=showMateri;$("b2").onclick=showQuiz;showMateri();
+</script></body></html>
